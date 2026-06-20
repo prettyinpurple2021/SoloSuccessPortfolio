@@ -748,6 +748,13 @@
       animation: holo-pan 4s ease infinite;
     }
 
+
+    /* Founder nav — hide desktop buttons on small screens to prevent overlap */
+    @media (max-width: 768px) {
+      .founder-nav-actions .btn-outline,
+      .founder-nav-actions .btn-holo { display: none; }
+      .nav__hamburger { display: flex !important; }
+    }
     /* Mobile tweaks */
     @media (max-width: 600px) {
       .founder-name { font-size: var(--text-3xl); }
@@ -800,7 +807,7 @@
           <li><a href="#connect">Connect</a></li>
           <li><a href="./blog.html">Blog</a></li>
         </ul>
-        <div class="nav__actions">
+        <div class="nav__actions founder-nav-actions">
           <a href="./index.html" class="btn-outline" style="font-size:var(--text-sm);padding:8px 16px;">← Back to Site</a>
           <a href="./index.html#ecosystem" class="btn-holo" style="font-size:var(--text-sm);padding:8px 16px;">Explore Products ↗</a>
           <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
@@ -855,8 +862,8 @@
                 <stop offset="100%" stop-color="#2d1b69"/>
               </linearGradient>
               <linearGradient id="skinGrad" x1="100" y1="80" x2="100" y2="160" gradientUnits="userSpaceOnUse">
-                <stop offset="0%" stop-color="#c68642"/>
-                <stop offset="100%" stop-color="#a0522d"/>
+                <stop offset="0%" stop-color="#fddcb5"/>
+                <stop offset="100%" stop-color="#f5c490"/>
               </linearGradient>
               <linearGradient id="shirtGrad" x1="0" y1="160" x2="200" y2="260" gradientUnits="userSpaceOnUse">
                 <stop offset="0%" stop-color="#ff4ec8"/>
@@ -897,13 +904,13 @@
             <path d="M109 109 Q116 106 123 109" stroke="#2d1b69" stroke-width="2.5" stroke-linecap="round" fill="none"/>
 
             <!-- Nose -->
-            <path d="M97 126 Q100 134 103 126" stroke="#8B5E3C" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+            <path d="M97 126 Q100 134 103 126" stroke="#c8956a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
             <!-- Nostrils -->
-            <ellipse cx="95" cy="130" rx="3" ry="2" fill="#8B5E3C" opacity="0.5"/>
-            <ellipse cx="105" cy="130" rx="3" ry="2" fill="#8B5E3C" opacity="0.5"/>
+            <ellipse cx="95" cy="130" rx="3" ry="2" fill="#c8956a" opacity="0.5"/>
+            <ellipse cx="105" cy="130" rx="3" ry="2" fill="#c8956a" opacity="0.5"/>
 
             <!-- Smile -->
-            <path d="M88 140 Q100 150 112 140" stroke="#6B3A2A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M88 140 Q100 150 112 140" stroke="#b07040" stroke-width="2.5" stroke-linecap="round" fill="none"/>
             <!-- Teeth hint -->
             <path d="M91 141 Q100 148 109 141" stroke="none" fill="#fff" opacity="0.6"/>
 
