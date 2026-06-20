@@ -1,0 +1,255 @@
+/* ============================================================
+   GLITCH LAYER — Y2K Digital Artifacts
+   IDLE STATE: completely static, zero animation
+   HOVER / .is-glitching: effects fire
+   ============================================================ */
+
+/* ── 1. SCANLINES — static texture, no animation ──────────── */
+.scrap-card__paper { isolation: isolate; }
+
+.scrap-card__scanlines {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  border-radius: inherit;
+  overflow: hidden;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 3px,
+    rgba(0,0,0,0.03) 3px,
+    rgba(0,0,0,0.03) 4px
+  );
+  opacity: 0.5;
+  /* NO animation in idle */
+}
+
+/* Scanlines animate only on hover */
+.scrap-card:hover .scrap-card__scanlines,
+.scrap-card.is-glitching .scrap-card__scanlines {
+  opacity: 0.9;
+  animation: scanlines-drift 1.5s linear infinite;
+}
+@keyframes scanlines-drift {
+  0%   { background-position: 0 0;    }
+  100% { background-position: 0 48px; }
+}
+
+/* ── 2. NOISE — static, no animation ─────────────────────── */
+.scrap-card__noise {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: inherit;
+  overflow: hidden;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n' x='0' y='0'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  mix-blend-mode: multiply;
+  opacity: 0.25;
+  /* NO animation in idle */
+}
+
+/* Noise only activates on hover */
+.scrap-card:hover .scrap-card__noise,
+.scrap-card.is-glitching .scrap-card__noise {
+  opacity: 0.75;
+  mix-blend-mode: overlay;
+  animation: noise-flicker 0.1s steps(1) infinite;
+}
+@keyframes noise-flicker {
+  0%   { background-position:   0px   0px; }
+  15%  { background-position: -20px  15px; }
+  30%  { background-position:  30px -10px; }
+  45%  { background-position: -15px  25px; }
+  60%  { background-position:  10px -20px; }
+  75%  { background-position: -25px  10px; }
+  90%  { background-position:  20px  30px; }
+  100% { background-position:   0px   0px; }
+}
+
+/* ── 3. GLITCH SLICE — only on hover ─────────────────────── */
+.scrap-card__inner {
+  position: relative;
+  overflow: hidden;
+}
+
+.scrap-card__inner::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: var(--glitch-y, 40%);
+  height: 3px;
+  z-index: 10;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,0,200,0.6) 25%,
+    rgba(0,220,255,0.6) 55%,
+    rgba(255,230,0,0.6) 80%,
+    transparent 100%
+  );
+  opacity: 0;
+  transform: scaleX(0.5) translateX(var(--glitch-x, 0px));
+  /* No idle animation */
+}
+
+/* Fire on hover */
+.scrap-card:hover .scrap-card__inner::after {
+  animation: glitch-hover 0.7s steps(1) infinite;
+}
+.scrap-card.is-glitching .scrap-card__inner::after {
+  animation: glitch-hover 0.6s steps(1) 2 forwards;
+}
+
+@keyframes glitch-hover {
+  0%   { opacity: 0; top: var(--glitch-y,40%); transform: scaleX(1.0) translateX(0); }
+  18%  { opacity: 1; top: 22%;                 transform: scaleX(0.7) translateX(-10px); }
+  22%  { opacity: 0; top: 22%; }
+  48%  { opacity: 0; top: var(--glitch-y,40%); transform: scaleX(0.5) translateX(0); }
+  52%  { opacity: 1; top: 62%;                 transform: scaleX(1.0) translateX(8px); }
+  56%  { opacity: 0; top: 62%; }
+  78%  { opacity: 0; top: 14%; }
+  82%  { opacity: 1; top: 14%;                 transform: scaleX(1.0) translateX(-14px); }
+  86%  { opacity: 0; }
+  100% { opacity: 0; top: var(--glitch-y,40%); transform: scaleX(1.0) translateX(0); }
+}
+
+/* ── 4. RGB SPLIT on title — hover only ──────────────────── */
+.scrap-card:hover .scrap-card__name,
+.scrap-card.is-glitching .scrap-card__name {
+  text-shadow:
+    -2px 0 rgba(0,220,255,0.5),
+     2px 0 rgba(255,0,180,0.5);
+  animation: rgb-jitter 0.2s steps(1) infinite;
+}
+@keyframes rgb-jitter {
+  0%   { text-shadow: -2px 0 rgba(0,220,255,0.5),  2px 0 rgba(255,0,180,0.5); }
+  33%  { text-shadow: -3px 1px rgba(0,220,255,0.35), 3px -1px rgba(255,0,180,0.35); }
+  66%  { text-shadow: -1px 0 rgba(0,220,255,0.65),  1px 0 rgba(255,0,180,0.65); }
+  100% { text-shadow: -2px 0 rgba(0,220,255,0.5),  2px 0 rgba(255,0,180,0.5); }
+}
+
+/* ── 5. INNER CARD FILTER BURST — hover only ─────────────── */
+.scrap-card__inner { transition: filter 0.15s ease; filter: none; }
+
+.scrap-card:hover .scrap-card__inner {
+  animation: filter-burst 0.5s ease forwards;
+}
+.scrap-card.is-glitching .scrap-card__inner {
+  animation: filter-burst 0.5s ease forwards;
+}
+@keyframes filter-burst {
+  0%   { filter: none; }
+  8%   { filter: hue-rotate(25deg)  contrast(1.25) brightness(1.06); }
+  18%  { filter: hue-rotate(-12deg) contrast(1.08) brightness(0.97); }
+  28%  { filter: hue-rotate(50deg)  contrast(1.3)  brightness(1.04) saturate(1.3); }
+  40%  { filter: none; }
+  100% { filter: none; }
+}
+
+/* ── 6. ICON GLITCH — hover only ────────────────────────── */
+.scrap-card:hover .scrap-card__icon,
+.scrap-card.is-glitching .scrap-card__icon {
+  animation: icon-glitch 0.4s steps(2) 1 forwards;
+}
+@keyframes icon-glitch {
+  0%   { filter: none;                          box-shadow: 2px 2px 0 var(--ink); }
+  30%  { filter: hue-rotate(100deg) saturate(2); box-shadow: -2px 1px 0 rgba(255,0,200,0.7), 2px -1px 0 rgba(0,220,255,0.7); }
+  60%  { filter: hue-rotate(220deg) contrast(1.8); box-shadow: 2px 2px 0 var(--ink); }
+  100% { filter: none;                          box-shadow: 2px 2px 0 var(--ink); }
+}
+
+/* ── 7. PIXEL ARTIFACTS — spawned by JS only ────────────── */
+.glitch-pixel {
+  position: absolute;
+  z-index: 6;
+  pointer-events: none;
+  width: var(--px-w, 4px);
+  height: var(--px-h, 2px);
+  background: var(--px-color, rgba(255,0,200,0.8));
+  animation: pixel-pop var(--px-dur, 0.3s) steps(1) var(--px-delay, 0s) 1 forwards;
+  opacity: 0;
+}
+@keyframes pixel-pop {
+  0%   { opacity: 0; }
+  10%  { opacity: 1; }
+  50%  { opacity: 1; transform: translateX(var(--px-drift, 2px)); }
+  80%  { opacity: 0.5; }
+  100% { opacity: 0; }
+}
+
+.glitch-pixel--cluster {
+  width: var(--px-w, 8px);
+  height: var(--px-h, 1px);
+  mix-blend-mode: multiply;
+  animation: pixel-cluster var(--px-dur, 0.5s) steps(3) var(--px-delay, 0s) 1 forwards;
+}
+@keyframes pixel-cluster {
+  0%   { opacity: 0; transform: scaleX(1); }
+  20%  { opacity: 0.9; transform: scaleX(2); }
+  50%  { opacity: 0.5; transform: scaleX(0.8) translateX(5px); }
+  80%  { opacity: 0.3; transform: scaleX(1.5); }
+  100% { opacity: 0; }
+}
+
+/* ── 8. CORNER BADGE — barely visible idle, bright on hover ─ */
+.scrap-card__badge {
+  position: absolute;
+  bottom: 6px; right: 8px;
+  z-index: 7;
+  font-family: 'JetBrains Mono','Courier New',monospace;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.12); /* very faint idle */
+  pointer-events: none;
+  user-select: none;
+}
+.scrap-card:hover .scrap-card__badge,
+.scrap-card.is-glitching .scrap-card__badge {
+  opacity: 1;
+  color: var(--y-magenta, #ff00cc);
+  animation: badge-blink 0.45s steps(1) infinite;
+}
+@keyframes badge-blink {
+  0%   { color: #ff00cc; }
+  33%  { color: #00ccff; }
+  66%  { color: #aaff00; }
+  100% { color: #ff00cc; }
+}
+
+/* ── 9. PAPER TINT — hover only ──────────────────────────── */
+.scrap-card:hover .scrap-card__paper {
+  animation: paper-tint 0.5s ease forwards;
+}
+.scrap-card.is-glitching .scrap-card__paper {
+  animation: paper-tint 0.5s ease forwards;
+}
+@keyframes paper-tint {
+  0%   { filter: none; }
+  12%  { filter: hue-rotate(18deg) saturate(1.2); }
+  28%  { filter: hue-rotate(-8deg) saturate(1.1); }
+  45%  { filter: hue-rotate(32deg) saturate(1.4) brightness(1.02); }
+  65%  { filter: none; }
+  100% { filter: none; }
+}
+
+/* ── REDUCED MOTION: kill everything ─────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .scrap-card__scanlines,
+  .scrap-card__noise,
+  .scrap-card__badge { display: none !important; }
+  .scrap-card__inner::after { display: none !important; }
+  .scrap-card:hover .scrap-card__name,
+  .scrap-card.is-glitching .scrap-card__name { text-shadow: none !important; animation: none !important; }
+  .scrap-card:hover .scrap-card__inner,
+  .scrap-card.is-glitching .scrap-card__inner { animation: none !important; filter: none !important; }
+  .scrap-card:hover .scrap-card__icon,
+  .scrap-card.is-glitching .scrap-card__icon { animation: none !important; }
+  .scrap-card:hover .scrap-card__paper,
+  .scrap-card.is-glitching .scrap-card__paper { animation: none !important; filter: none !important; }
+}

@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fran — Founder of SoloSuccess Solutions</title>
+  <meta name="description" content="Meet Fran, DIY enthusiast, engineering student, and the solo founder behind SoloSuccess Solutions. She searched everywhere for software built for solo builders — and when she couldn't find it, she built it herself."/>
+  <meta property="og:title" content="Fran — Founder of SoloSuccess Solutions"/>
+  <meta property="og:description" content="She searched everywhere for software built for solo founders. When it didn't exist, she built it herself."/>
+
+  <link rel="preconnect" href="https://api.fontshare.com"/>
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,700,800,900&f[]=satoshi@400,500,700&f[]=jet-brains-mono@400,700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./base.css"/>
+  <link rel="stylesheet" href="./style.css"/>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111'/><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23ff4ec8'/><stop offset='50%25' stop-color='%23ffe800'/><stop offset='100%25' stop-color='%2300cfff'/></linearGradient></defs><text x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black' font-size='20' font-weight='900' fill='url(%23g)'>F</text></svg>"/>
+
+  <style>
+    /* ── FOUNDER PAGE SPECIFIC STYLES ─────────────────────── */
+
+    /* ── HERO: full scrapbook spread ─────────────────────── */
+    .founder-hero {
+      min-height: 92dvh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-bottom: 3px solid var(--ink);
+      overflow: hidden;
+      position: relative;
+    }
+    @media (max-width: 768px) {
+      .founder-hero { grid-template-columns: 1fr; min-height: auto; }
+    }
+
+    /* Left panel — photo / visual */
+    .founder-hero__visual {
+      position: relative;
+      background: var(--bg-3);
+      border-right: 3px solid var(--ink);
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+    }
+    @media (max-width: 768px) {
+      .founder-hero__visual { border-right: none; border-bottom: 3px solid var(--ink); min-height: 380px; }
+    }
+
+    /* Big letter backdrop */
+    .founder-hero__letter {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: clamp(200px, 30vw, 380px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+      /* Holographic fill */
+      background: var(--holo);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: holo-pan 5s ease infinite;
+      opacity: 0.12;
+    }
+
+    /* Scrapbook photo placeholder — styled card */
+    .founder-photo-card {
+      position: relative;
+      z-index: 2;
+      margin: auto;
+      background: var(--paper-2);
+      border: 3px solid var(--ink);
+      box-shadow: 8px 8px 0 var(--ink);
+      padding: 14px 14px 48px;
+      transform: rotate(-2.5deg);
+      max-width: 320px;
+      width: 80%;
+      transition: transform 300ms cubic-bezier(0.16,1,0.3,1);
+    }
+    .founder-photo-card:hover { transform: rotate(0deg) translateY(-6px); }
+
+    /* Tape on photo card */
+    .founder-photo-card::before {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-1.5deg);
+      width: 72px; height: 22px;
+      background: var(--holo);
+      background-size: 200%;
+      animation: holo-pan 4s ease infinite;
+      opacity: 0.7;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      z-index: 3;
+    }
+
+    /* Photo area — SVG portrait illustration */
+    .founder-portrait {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      background: linear-gradient(135deg, #f0e8ff 0%, #e8f0ff 50%, #fff0f8 100%);
+      border: 2px solid rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* SVG avatar illustration */
+    .founder-avatar {
+      width: 85%;
+      height: 85%;
+    }
+
+    /* Caption below photo */
+    .founder-photo-card__caption {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      right: 14px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: rgba(0,0,0,0.45);
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    /* Floating sticker decorations */
+    .founder-sticker {
+      position: absolute;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border: 2px solid var(--ink);
+      box-shadow: 2px 2px 0 var(--ink);
+      z-index: 3;
+      pointer-events: none;
+    }
+    .fs1 { top: 12%; right: 8%; background: var(--paper-1); transform: rotate(5deg); }
+    .fs2 { bottom: 14%; left: 6%; background: var(--paper-3); transform: rotate(-3deg); }
+    .fs3 { top: 55%; right: 6%; background: var(--paper-4); transform: rotate(2.5deg); }
+
+    /* Holo tape strips */
+    .founder-tape {
+      position: absolute;
+      height: 16px;
+      opacity: 0.6;
+      pointer-events: none;
+      background: var(--holo);
+      background-size: 200%;
+      animation: holo-pan 5s ease infinite;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      z-index: 1;
+    }
+    .ft1 { top: 30%; left: -10px; width: 120px; transform: rotate(-2deg); }
+    .ft2 { bottom: 22%; right: -10px; width: 100px; transform: rotate(2.5deg); }
+
+    /* Right panel — text content */
+    .founder-hero__text {
+      padding: clamp(var(--sp10), 6vw, var(--sp20));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: var(--sp6);
+    }
+
+    .founder-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      background: var(--paper-1);
+      border: 2px solid var(--ink);
+      box-shadow: 2px 2px 0 var(--ink);
+      padding: 5px 14px;
+      width: fit-content;
+    }
+    .founder-eyebrow-gem {
+      width: 10px; height: 10px;
+      background: var(--holo);
+      background-size: 200%;
+      animation: holo-pan 3s ease infinite;
+      clip-path: polygon(50% 0%,80% 20%,100% 50%,80% 80%,50% 100%,20% 80%,0% 50%,20% 20%);
+      flex-shrink: 0;
+    }
+
+    .founder-name {
+      font-family: var(--font-display);
+      font-size: var(--text-hero);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      line-height: 0.9;
+      color: var(--ink);
+    }
+    .founder-name .accent {
+      display: block;
+      background: var(--holo);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: holo-pan 5s ease infinite;
+    }
+
+    .founder-title {
+      font-family: var(--font-mono);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      display: flex;
+      align-items: center;
+      gap: var(--sp3);
+    }
+    .founder-title::before {
+      content: '';
+      display: block;
+      width: 20px; height: 2px;
+      background: var(--holo);
+      background-size: 200%;
+      animation: holo-pan 4s ease infinite;
+      flex-shrink: 0;
+    }
+
+    .founder-intro {
+      font-size: var(--text-lg);
+      color: var(--ink-mid);
+      line-height: 1.65;
+      max-width: 48ch;
+    }
+    .founder-intro strong { color: var(--ink); font-weight: 700; }
+
+    .founder-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp2);
+    }
+    .founder-chip {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border: 2px solid var(--ink);
+      box-shadow: 2px 2px 0 var(--ink);
+      color: var(--ink);
+      background: var(--bg);
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .founder-chip:hover {
+      background: var(--paper-1);
+      transform: translate(-1px,-1px);
+      box-shadow: 3px 3px 0 var(--ink);
+    }
+
+    /* ── ORIGIN STORY SECTION ─────────────────────────────── */
+    .origin {
+      padding-block: clamp(var(--sp16), 10vw, var(--sp24));
+      border-bottom: 3px solid var(--ink);
+      background: var(--bg-2);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Big ghost quote mark behind text */
+    .origin::before {
+      content: '"';
+      position: absolute;
+      top: -0.2em;
+      left: -0.05em;
+      font-family: var(--font-display);
+      font-size: clamp(200px, 30vw, 400px);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--ink);
+      opacity: 0.04;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .origin__inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: clamp(var(--sp10), 8vw, var(--sp20));
+      align-items: start;
+    }
+    @media (max-width: 768px) { .origin__inner { grid-template-columns: 1fr; } }
+
+    /* Sticky sidebar label */
+    .origin__sidebar {
+      position: sticky;
+      top: calc(65px + 40px + var(--sp8));
+    }
+
+    .origin__label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: var(--sp4);
+    }
+    .origin__label::before {
+      content: '';
+      display: block;
+      width: 18px; height: 2px;
+      background: var(--holo);
+      background-size: 200%;
+      animation: holo-pan 4s ease infinite;
+    }
+
+    .origin__chapter-title {
+      font-family: var(--font-display);
+      font-size: var(--text-xl);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: var(--sp6);
+    }
+
+    /* Scrapbook annotation chips */
+    .origin__annotations {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp3);
+      margin-top: var(--sp6);
+    }
+    .origin__annotation {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--ink-mid);
+      background: var(--paper-bg, var(--paper-1));
+      border: 1.5px solid rgba(0,0,0,0.15);
+      padding: var(--sp2) var(--sp3);
+      transform: rotate(var(--rot, 0deg));
+      box-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+      width: fit-content;
+      max-width: 100%;
+    }
+
+    /* Story text */
+    .origin__story {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp8);
+    }
+
+    .origin__block {
+      position: relative;
+    }
+
+    .origin__pull-quote {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      line-height: 1.15;
+      margin-bottom: var(--sp5);
+      max-width: 26ch;
+    }
+    .origin__pull-quote .t-holo {
+      background: var(--holo);
+      background-size: 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: holo-pan 5s ease infinite;
+    }
+
+    .origin__para {
+      font-size: var(--text-base);
+      color: var(--ink-mid);
+      line-height: 1.8;
+      max-width: 62ch;
+      margin-bottom: var(--sp4);
+    }
+    .origin__para:last-child { margin-bottom: 0; }
+    .origin__para strong { color: var(--ink); font-weight: 700; }
+
+    /* Inline scrapbook tape accent */
+    .origin__tape-accent {
+      display: inline-block;
+      background: var(--holo);
+      background-size: 200%;
+      animation: holo-pan 4s ease infinite;
+      height: 3px;
+      width: 60px;
+      margin-block: var(--sp4);
+      opacity: 0.7;
+    }
+
+    /* ── WHAT I BELIEVE section ───────────────────────────── */
+    .beliefs {
+      padding-block: clamp(var(--sp16), 10vw, var(--sp24));
+      border-bottom: 3px solid var(--ink);
+    }
+    .beliefs__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+      gap: var(--sp5);
+      margin-top: clamp(var(--sp10), 5vw, var(--sp16));
+    }
+    .belief-card {
+      padding: clamp(var(--sp6), 3vw, var(--sp8));
+      border: 2.5px solid var(--ink);
+      box-shadow: 4px 4px 0 var(--ink);
+      background: var(--bg-2);
+      position: relative;
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .belief-card:hover { transform: translate(-3px,-3px); box-shadow: 7px 7px 0 var(--ink); }
+    /* Top colour strip cycles through product colours */
+    .belief-card:nth-child(1)::before { content:''; position:absolute; top:0;left:0;right:0;height:3px; background:#ff4ec8; }
+    .belief-card:nth-child(2)::before { content:''; position:absolute; top:0;left:0;right:0;height:3px; background:#00cfff; }
+    .belief-card:nth-child(3)::before { content:''; position:absolute; top:0;left:0;right:0;height:3px; background:#ffe800; }
+    .belief-card:nth-child(4)::before { content:''; position:absolute; top:0;left:0;right:0;height:3px; background:#c87af9; }
+    .belief-card:nth-child(5)::before { content:''; position:absolute; top:0;left:0;right:0;height:3px; background:#00e676; }
+    .belief-card:nth-child(6)::before { content:''; position:absolute; top:0;left:0;right:0;height:3px; background:#ff9a00; }
+    .belief-card__num {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--ink-light);
+      margin-bottom: var(--sp4);
+      margin-top: var(--sp2);
+    }
+    .belief-card__text {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    /* ── STATS STRIP ──────────────────────────────────────── */
+    .founder-stats {
+      border-bottom: 3px solid var(--ink);
+      background: var(--ink);
+      display: flex;
+    }
+    .founder-stat {
+      flex: 1;
+      padding: clamp(var(--sp5), 3vw, var(--sp8)) var(--sp6);
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,0.08);
+      transition: background var(--transition);
+    }
+    .founder-stat:last-child { border-right: none; }
+    .founder-stat:hover { background: rgba(255,255,255,0.04); }
+    .founder-stat__num {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      background: var(--holo);
+      background-size: 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: holo-pan 5s ease infinite;
+    }
+    .founder-stat__label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-top: var(--sp1);
+    }
+    @media (max-width: 600px) {
+      .founder-stats { flex-wrap: wrap; }
+      .founder-stat { flex: 1 1 50%; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    }
+
+    /* ── TIMELINE ──────────────────────────────────────────── */
+    .timeline {
+      padding-block: clamp(var(--sp16), 10vw, var(--sp24));
+      border-bottom: 3px solid var(--ink);
+      background: var(--bg-2);
+      overflow: hidden;
+    }
+    .timeline__track {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: clamp(var(--sp10), 5vw, var(--sp16));
+      padding-left: clamp(var(--sp10), 6vw, var(--sp16));
+    }
+    /* Vertical line */
+    .timeline__track::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      bottom: 10px;
+      width: 3px;
+      background: var(--ink);
+    }
+    .timeline__item {
+      position: relative;
+      padding: clamp(var(--sp5), 3vw, var(--sp8));
+      margin-bottom: var(--sp6);
+      background: var(--bg);
+      border: 2.5px solid var(--ink);
+      box-shadow: 4px 4px 0 var(--ink);
+      max-width: 640px;
+    }
+    /* Dot on the line */
+    .timeline__item::before {
+      content: '';
+      position: absolute;
+      left: calc(-1 * clamp(var(--sp10), 6vw, var(--sp16)) - 1px);
+      top: 20px;
+      width: 14px; height: 14px;
+      border: 3px solid var(--ink);
+      background: var(--holo);
+      background-size: 200%;
+      animation: holo-pan 4s ease infinite;
+      transform: translateX(-50%);
+    }
+    /* Connector line from dot to card */
+    .timeline__item::after {
+      content: '';
+      position: absolute;
+      left: calc(-1 * clamp(var(--sp10), 6vw, var(--sp16)) + 7px);
+      top: 26px;
+      width: clamp(var(--sp8), 4vw, var(--sp12));
+      height: 2px;
+      background: var(--ink);
+    }
+    .timeline__year {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--ink-light);
+      text-transform: uppercase;
+      margin-bottom: var(--sp2);
+    }
+    .timeline__event {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      margin-bottom: var(--sp2);
+    }
+    .timeline__desc {
+      font-size: var(--text-sm);
+      color: var(--ink-mid);
+      line-height: 1.65;
+      max-width: none;
+    }
+
+    /* ── CTA / CONNECT SECTION ────────────────────────────── */
+    .founder-cta {
+      padding-block: clamp(var(--sp16), 10vw, var(--sp24));
+      background: var(--bg);
+      overflow: hidden;
+      position: relative;
+      border-bottom: 3px solid var(--ink);
+    }
+    .founder-cta::before {
+      content: '';
+      position: absolute;
+      top: -20%; right: -5%;
+      width: 45%; height: 140%;
+      background: var(--holo);
+      background-size: 200%;
+      animation: holo-pan 6s ease infinite;
+      opacity: 0.08;
+      transform: rotate(-7deg);
+      clip-path: polygon(15% 0%,100% 0%,85% 100%,0% 100%);
+    }
+    .founder-cta__inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(var(--sp10), 7vw, var(--sp20));
+      align-items: center;
+    }
+    @media (max-width: 768px) { .founder-cta__inner { grid-template-columns: 1fr; } }
+    .founder-cta__text {}
+    .founder-cta__title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      line-height: 1.05;
+      margin-bottom: var(--sp5);
+    }
+    .founder-cta__desc {
+      font-size: var(--text-base);
+      color: var(--ink-mid);
+      line-height: 1.7;
+      max-width: 44ch;
+      margin-bottom: var(--sp8);
+    }
+    .founder-cta__links {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp4);
+    }
+    .founder-cta-link {
+      display: flex;
+      align-items: center;
+      gap: var(--sp4);
+      padding: var(--sp4) var(--sp5);
+      border: 2.5px solid var(--ink);
+      box-shadow: 3px 3px 0 var(--ink);
+      background: var(--bg-2);
+      text-decoration: none;
+      color: var(--ink);
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+    .founder-cta-link:hover {
+      transform: translate(-3px,-3px);
+      box-shadow: 6px 6px 0 var(--ink);
+      background: var(--paper-1);
+    }
+    .founder-cta-link__icon {
+      width: 40px; height: 40px;
+      border: 2px solid var(--ink);
+      background: #fff;
+      box-shadow: 2px 2px 0 var(--ink);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: var(--ink);
+    }
+    .founder-cta-link__text {}
+    .founder-cta-link__label {
+      font-family: var(--font-display);
+      font-size: var(--text-sm);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: var(--ink);
+    }
+    .founder-cta-link__sub {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--ink-light);
+      letter-spacing: 0.06em;
+    }
+    .founder-cta-link__arrow {
+      margin-left: auto;
+      flex-shrink: 0;
+      color: var(--ink-light);
+      transition: transform var(--transition), color var(--transition);
+    }
+    .founder-cta-link:hover .founder-cta-link__arrow {
+      transform: translate(3px,-3px);
+      color: var(--ink);
+    }
+
+    /* Signature / sign-off */
+    .founder-signoff {
+      padding: clamp(var(--sp8), 4vw, var(--sp12));
+      border: 2.5px solid var(--ink);
+      box-shadow: 6px 6px 0 var(--ink);
+      background: var(--paper-2);
+      transform: rotate(1deg);
+      max-width: 420px;
+      position: relative;
+    }
+    .founder-signoff::before {
+      content: '';
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      transform: translateX(-50%) rotate(-2deg);
+      width: 60px; height: 20px;
+      background: var(--holo);
+      background-size: 200%;
+      animation: holo-pan 4s ease infinite;
+      opacity: 0.65;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .founder-signoff__quote {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: var(--sp5);
+    }
+    .founder-signoff__name {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--ink-light);
+      text-transform: uppercase;
+    }
+    .founder-signoff__name span {
+      background: var(--holo);
+      background-size: 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: holo-pan 4s ease infinite;
+    }
+
+    /* Mobile tweaks */
+    @media (max-width: 600px) {
+      .founder-name { font-size: var(--text-3xl); }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="sr-only">Skip to main content</a>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <span class="ticker__item">Meet Fran</span>
+    <span class="ticker__item">Solo Founder</span>
+    <span class="ticker__item">Engineering Student</span>
+    <span class="ticker__item">DIY Enthusiast</span>
+    <span class="ticker__item">Tech Guru</span>
+    <span class="ticker__item">Albany, Georgia</span>
+    <span class="ticker__item">She Built It Herself</span>
+    <span class="ticker__item">SoloSuccess Solutions</span>
+    <span class="ticker__item">Meet Fran</span>
+    <span class="ticker__item">Solo Founder</span>
+    <span class="ticker__item">Engineering Student</span>
+    <span class="ticker__item">DIY Enthusiast</span>
+    <span class="ticker__item">Tech Guru</span>
+    <span class="ticker__item">Albany, Georgia</span>
+    <span class="ticker__item">She Built It Herself</span>
+    <span class="ticker__item">SoloSuccess Solutions</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<header role="banner">
+  <nav class="nav" id="nav" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="./index.html" class="nav__logo" aria-label="SoloSuccess Solutions home">
+          <div class="nav__logo-gem" style="width:38px;height:38px;border:2px solid var(--ink);overflow:hidden;flex-shrink:0;">
+            <img src="./assets/logo.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;mix-blend-mode:multiply;"/>
+          </div>
+          <div>
+            <span class="nav__logo-name">SoloSuccess Solutions</span>
+            <span class="nav__logo-sub">Founder — Fran</span>
+          </div>
+        </a>
+        <ul class="nav__links" role="list">
+          <li><a href="./index.html#ecosystem">Products</a></li>
+          <li><a href="./index.html#about">About</a></li>
+          <li><a href="#connect">Connect</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+        </ul>
+        <div class="nav__actions">
+          <a href="./index.html" class="btn-outline" style="font-size:var(--text-sm);padding:8px 16px;">← Back to Site</a>
+          <a href="./index.html#ecosystem" class="btn-holo" style="font-size:var(--text-sm);padding:8px 16px;">Explore Products ↗</a>
+          <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <nav class="nav__mobile" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="./index.html#ecosystem">Products</a>
+    <a href="./index.html#about">About</a>
+    <a href="#connect">Connect</a>
+    <a href="./index.html">← Back to Site</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- ── HERO ───────────────────────────────────────────────── -->
+  <section class="founder-hero" aria-label="Founder hero">
+
+    <!-- Left: Photo panel -->
+    <div class="founder-hero__visual">
+      <!-- Ghost letter backdrop -->
+      <div class="founder-hero__letter" aria-hidden="true">F</div>
+
+      <!-- Holo tape strips -->
+      <div class="founder-tape ft1" aria-hidden="true"></div>
+      <div class="founder-tape ft2" aria-hidden="true"></div>
+
+      <!-- Floating stickers -->
+      <div class="founder-sticker fs1" aria-hidden="true">Albany, GA ✦</div>
+      <div class="founder-sticker fs2" aria-hidden="true">Est. 2024</div>
+      <div class="founder-sticker fs3" aria-hidden="true">Solo Founder</div>
+
+      <!-- Photo card -->
+      <div class="founder-photo-card" role="img" aria-label="Portrait of Fran, founder of SoloSuccess Solutions">
+        <div class="founder-portrait">
+          <!-- SVG avatar illustration -->
+          <svg class="founder-avatar" viewBox="0 0 200 260" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <!-- Background gradient -->
+            <defs>
+              <linearGradient id="bg" x1="0" y1="0" x2="200" y2="260" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#f0e8ff"/>
+                <stop offset="50%" stop-color="#e8f0ff"/>
+                <stop offset="100%" stop-color="#fff0f8"/>
+              </linearGradient>
+              <linearGradient id="holoHair" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#2d1b69"/>
+                <stop offset="50%" stop-color="#1a0a3d"/>
+                <stop offset="100%" stop-color="#2d1b69"/>
+              </linearGradient>
+              <linearGradient id="skinGrad" x1="100" y1="80" x2="100" y2="160" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#c68642"/>
+                <stop offset="100%" stop-color="#a0522d"/>
+              </linearGradient>
+              <linearGradient id="shirtGrad" x1="0" y1="160" x2="200" y2="260" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#ff4ec8"/>
+                <stop offset="40%" stop-color="#c87af9"/>
+                <stop offset="100%" stop-color="#7c4dff"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Body / torso -->
+            <ellipse cx="100" cy="220" rx="65" ry="55" fill="url(#shirtGrad)"/>
+            <!-- Neck -->
+            <rect x="88" y="150" width="24" height="28" rx="4" fill="url(#skinGrad)"/>
+            <!-- Head -->
+            <ellipse cx="100" cy="118" rx="44" ry="48" fill="url(#skinGrad)"/>
+            <!-- Hair — natural curls/locs -->
+            <!-- Base hair shape -->
+            <ellipse cx="100" cy="88" rx="50" ry="44" fill="url(#holoHair)"/>
+            <!-- Hair volume / curls overlay -->
+            <ellipse cx="68" cy="108" rx="20" ry="24" fill="url(#holoHair)"/>
+            <ellipse cx="132" cy="108" rx="20" ry="24" fill="url(#holoHair)"/>
+            <ellipse cx="100" cy="72" rx="30" ry="22" fill="url(#holoHair)"/>
+            <!-- Curl detail strands -->
+            <path d="M60 90 Q50 108 58 126" stroke="#3d2480" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M140 90 Q150 108 142 126" stroke="#3d2480" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M78 72 Q72 58 80 50" stroke="#3d2480" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M122 72 Q128 58 120 50" stroke="#3d2480" stroke-width="3" stroke-linecap="round" fill="none"/>
+            <path d="M100 70 Q96 54 100 46" stroke="#3d2480" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+            <!-- Eyes -->
+            <ellipse cx="84" cy="118" rx="7" ry="8" fill="#fff"/>
+            <ellipse cx="84" cy="119" rx="5" ry="5.5" fill="#2d1b69"/>
+            <circle cx="85.5" cy="117" r="1.5" fill="#fff"/>
+            <ellipse cx="116" cy="118" rx="7" ry="8" fill="#fff"/>
+            <ellipse cx="116" cy="119" rx="5" ry="5.5" fill="#2d1b69"/>
+            <circle cx="117.5" cy="117" r="1.5" fill="#fff"/>
+            <!-- Eyebrows -->
+            <path d="M77 109 Q84 106 91 109" stroke="#2d1b69" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <path d="M109 109 Q116 106 123 109" stroke="#2d1b69" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+
+            <!-- Nose -->
+            <path d="M97 126 Q100 134 103 126" stroke="#8B5E3C" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+            <!-- Nostrils -->
+            <ellipse cx="95" cy="130" rx="3" ry="2" fill="#8B5E3C" opacity="0.5"/>
+            <ellipse cx="105" cy="130" rx="3" ry="2" fill="#8B5E3C" opacity="0.5"/>
+
+            <!-- Smile -->
+            <path d="M88 140 Q100 150 112 140" stroke="#6B3A2A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+            <!-- Teeth hint -->
+            <path d="M91 141 Q100 148 109 141" stroke="none" fill="#fff" opacity="0.6"/>
+
+            <!-- Ears -->
+            <ellipse cx="56" cy="120" rx="8" ry="10" fill="url(#skinGrad)"/>
+            <ellipse cx="144" cy="120" rx="8" ry="10" fill="url(#skinGrad)"/>
+
+            <!-- Earrings — small hoops -->
+            <circle cx="56" cy="124" r="5" stroke="#ffd700" stroke-width="2" fill="none"/>
+            <circle cx="144" cy="124" r="5" stroke="#ffd700" stroke-width="2" fill="none"/>
+
+            <!-- Shirt collar / neckline -->
+            <path d="M75 160 Q100 175 125 160" stroke="rgba(255,255,255,0.4)" stroke-width="2" fill="none"/>
+
+            <!-- Laptop — she's a builder -->
+            <rect x="45" y="210" width="110" height="64" rx="4" fill="#1a1a2e" opacity="0.9"/>
+            <rect x="50" y="215" width="100" height="54" rx="2" fill="#0d0d1a"/>
+            <!-- Screen glow — code lines -->
+            <rect x="56" y="222" width="50" height="3" rx="1" fill="#56d364" opacity="0.8"/>
+            <rect x="56" y="228" width="35" height="3" rx="1" fill="#79c0ff" opacity="0.8"/>
+            <rect x="56" y="234" width="60" height="3" rx="1" fill="#ffa657" opacity="0.8"/>
+            <rect x="56" y="240" width="40" height="3" rx="1" fill="#c87af9" opacity="0.8"/>
+            <rect x="56" y="246" width="55" height="3" rx="1" fill="#56d364" opacity="0.5"/>
+            <!-- Cursor blink -->
+            <rect x="116" y="222" width="6" height="12" rx="1" fill="#56d364" opacity="0.9"/>
+
+            <!-- Holographic gem badge on shirt -->
+            <polygon points="100,180 106,187 104,195 96,195 94,187" fill="url(#shirtGrad)" stroke="#fff" stroke-width="1.5" opacity="0.8"/>
+            <text x="100" y="193" text-anchor="middle" font-family="Arial Black" font-size="7" font-weight="900" fill="#fff">S</text>
+          </svg>
+        </div>
+        <div class="founder-photo-card__caption">Fran · Solo Founder · Albany, GA</div>
+      </div>
+    </div>
+
+    <!-- Right: Text -->
+    <div class="founder-hero__text">
+      <div class="founder-eyebrow">
+        <span class="founder-eyebrow-gem" aria-hidden="true"></span>
+        Founder · SoloSuccess Solutions
+      </div>
+
+      <h1 class="founder-name">
+        Hi,<br/>I'm
+        <span class="accent">Fran.</span>
+      </h1>
+
+      <p class="founder-title">
+        Solo Founder · Engineering Student · DIY Everything
+      </p>
+
+      <p class="founder-intro">
+        I'm a <strong>tech-obsessed, DIY-driven engineering student</strong> from Albany, Georgia who searched the entire internet for a tool built for solo founders — and when it didn't exist,
+        <strong>I built it myself.</strong>
+      </p>
+
+      <div class="founder-chips" role="list" aria-label="About Fran">
+        <span class="founder-chip" role="listitem">Engineering Student</span>
+        <span class="founder-chip" role="listitem">DIY Enthusiast</span>
+        <span class="founder-chip" role="listitem">Tech Guru</span>
+        <span class="founder-chip" role="listitem">Albany, GA</span>
+        <span class="founder-chip" role="listitem">Solo-Founded</span>
+        <span class="founder-chip" role="listitem">AI-First</span>
+      </div>
+
+      <div style="display:flex;gap:var(--sp4);flex-wrap:wrap;margin-top:var(--sp2);">
+        <a href="#story" class="btn-holo" style="font-size:var(--text-sm);padding:12px 28px;">Read My Story →</a>
+        <a href="./index.html#ecosystem" class="btn-outline" style="font-size:var(--text-sm);padding:12px 28px;">See the Products</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── STATS STRIP ─────────────────────────────────────────── -->
+  <div class="founder-stats" role="list" aria-label="Founder statistics">
+    <div class="founder-stat" role="listitem">
+      <div class="founder-stat__num">7</div>
+      <div class="founder-stat__label">Products Built</div>
+    </div>
+    <div class="founder-stat" role="listitem">
+      <div class="founder-stat__num">1</div>
+      <div class="founder-stat__label">Founder</div>
+    </div>
+    <div class="founder-stat" role="listitem">
+      <div class="founder-stat__num">2024</div>
+      <div class="founder-stat__label">Year Founded</div>
+    </div>
+    <div class="founder-stat" role="listitem">
+      <div class="founder-stat__num">0</div>
+      <div class="founder-stat__label">Excuses Made</div>
+    </div>
+    <div class="founder-stat" role="listitem">
+      <div class="founder-stat__num">∞</div>
+      <div class="founder-stat__label">Ideas Remaining</div>
+    </div>
+  </div>
+
+  <!-- ── ORIGIN STORY ───────────────────────────────────────── -->
+  <section class="origin" id="story" aria-labelledby="story-title">
+    <div class="container">
+      <div class="origin__inner">
+
+        <!-- Sidebar -->
+        <aside class="origin__sidebar">
+          <p class="origin__label">The Story</p>
+          <h2 class="origin__chapter-title" id="story-title">How It Started.</h2>
+          <div class="origin__annotations">
+            <div class="origin__annotation" style="--paper-bg: var(--paper-1); --rot: -2deg;">
+              → Searched everywhere.
+            </div>
+            <div class="origin__annotation" style="--paper-bg: var(--paper-3); --rot: 1.5deg;">
+              → Found nothing.
+            </div>
+            <div class="origin__annotation" style="--paper-bg: var(--paper-4); --rot: -1deg;">
+              → Built it herself.
+            </div>
+            <div class="origin__annotation" style="--paper-bg: var(--paper-2); --rot: 2deg;">
+              ✦ 2024
+            </div>
+          </div>
+        </aside>
+
+        <!-- Story body -->
+        <div class="origin__story">
+
+          <div class="origin__block">
+            <h3 class="origin__pull-quote">
+              "I needed something that <span class="t-holo">didn't exist yet.</span>"
+            </h3>
+            <p class="origin__para">
+              I was in the middle of building my own SaaS product — solo, no co-founder, no team, no blueprint. I had the technical skills and the vision, but I kept running into the same wall: <strong>I didn't know what to do next.</strong>
+            </p>
+            <p class="origin__para">
+              I needed something to help me stay organized, prioritize intelligently, and actually move toward launch. Not a generic project management tool. Not another course that assumed I had a team. Something built for <strong>exactly the situation I was in</strong> — one person, limited time, unlimited ambition.
+            </p>
+          </div>
+
+          <div class="origin__tape-accent"></div>
+
+          <div class="origin__block">
+            <h3 class="origin__pull-quote">
+              I searched the entire internet. <span class="t-holo">It wasn't there.</span>
+            </h3>
+            <p class="origin__para">
+              I looked everywhere. Product Hunt, Reddit, Google, app directories, startup forums — nothing built specifically for solo founders trying to launch a SaaS. Everything was either designed for teams, designed for enterprises, or just too generic to be useful when you're operating alone.
+            </p>
+            <p class="origin__para">
+              The solo founder experience is fundamentally different. You're wearing every hat simultaneously. You have no one to delegate to, no one to sanity-check you, and no margin for wasted time. <strong>Generic tools just don't cut it.</strong>
+            </p>
+          </div>
+
+          <div class="origin__tape-accent"></div>
+
+          <div class="origin__block">
+            <h3 class="origin__pull-quote">
+              So I stopped searching and <span class="t-holo">started building.</span>
+            </h3>
+            <p class="origin__para">
+              That frustration became fuel. If the tool I needed didn't exist, then there were probably thousands of other solo founders who needed it too. Being an engineering student and a lifelong DIY person, I had the skills to do something about it.
+            </p>
+            <p class="origin__para">
+              <strong>SoloSuccess Solutions was born from that gap.</strong> Not from a business plan or an investor deck — from a genuine, personal problem that nobody had solved. Seven products, one company, one mission: give solo founders the tools that used to require a whole team.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHAT I BELIEVE ──────────────────────────────────────── -->
+  <section class="beliefs" aria-labelledby="beliefs-title">
+    <div class="container">
+      <p class="section__label">What I Believe</p>
+      <h2 class="section__title" id="beliefs-title">The Principles I<br/>Build Everything On.</h2>
+      <div class="beliefs__grid" role="list">
+        <div class="belief-card" role="listitem">
+          <div class="belief-card__num">01</div>
+          <p class="belief-card__text">If you can't find the tool you need, build it yourself.</p>
+        </div>
+        <div class="belief-card" role="listitem">
+          <div class="belief-card__num">02</div>
+          <p class="belief-card__text">Solo doesn't mean small. It means focused.</p>
+        </div>
+        <div class="belief-card" role="listitem">
+          <div class="belief-card__num">03</div>
+          <p class="belief-card__text">AI should work for you — not the other way around.</p>
+        </div>
+        <div class="belief-card" role="listitem">
+          <div class="belief-card__num">04</div>
+          <p class="belief-card__text">The best products come from real, lived-in problems.</p>
+        </div>
+        <div class="belief-card" role="listitem">
+          <div class="belief-card__num">05</div>
+          <p class="belief-card__text">Ship imperfect. Iterate relentlessly. Never stop.</p>
+        </div>
+        <div class="belief-card" role="listitem">
+          <div class="belief-card__num">06</div>
+          <p class="belief-card__text">Every solo founder deserves the same leverage as a funded team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TIMELINE ────────────────────────────────────────────── -->
+  <section class="timeline" aria-labelledby="timeline-title">
+    <div class="container">
+      <p class="section__label">The Journey</p>
+      <h2 class="section__title" id="timeline-title">How We Got Here.</h2>
+      <div class="timeline__track" role="list">
+        <div class="timeline__item" role="listitem">
+          <div class="timeline__year">Pre-2024</div>
+          <div class="timeline__event">The Search Begins</div>
+          <p class="timeline__desc">Building a SaaS solo, Fran searches the entire internet for a tool built specifically for solo founders. Finds nothing that fits. The frustration begins to accumulate.</p>
+        </div>
+        <div class="timeline__item" role="listitem">
+          <div class="timeline__year">Early 2024</div>
+          <div class="timeline__event">The Pivot</div>
+          <p class="timeline__desc">Instead of continuing to search, Fran turns the problem on its head: if this tool doesn't exist, she'll build it. Engineering skills + DIY mentality + genuine founder need = the beginning of SoloSuccess Solutions.</p>
+        </div>
+        <div class="timeline__item" role="listitem">
+          <div class="timeline__year">2024</div>
+          <div class="timeline__event">SoloSuccess Solutions is Born</div>
+          <p class="timeline__desc">The company is founded. The mission is locked in: give solo founders the tools that used to require a team. The first products begin development.</p>
+        </div>
+        <div class="timeline__item" role="listitem">
+          <div class="timeline__year">2024 → Now</div>
+          <div class="timeline__event">The Ecosystem Expands</div>
+          <p class="timeline__desc">Academy, Content Factory, SoloScribe, and SoloDesign launch. SoloSuccess AI, SoloScout, and SoloConnect are in development. The ecosystem grows — still solo-founded, still AI-first, still built from personal experience.</p>
+        </div>
+        <div class="timeline__item" role="listitem" style="border-style:dashed;">
+          <div class="timeline__year">What's Next</div>
+          <div class="timeline__event">The Full OS Ships</div>
+          <p class="timeline__desc">All 7 products live. An integrated dashboard connecting the ecosystem. A growing community of solo founders building alongside each other. The journey continues.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONNECT ─────────────────────────────────────────────── -->
+  <section class="founder-cta" id="connect" aria-labelledby="connect-title">
+    <div class="container">
+      <div class="founder-cta__inner">
+
+        <div class="founder-cta__text">
+          <p class="section__label">Connect</p>
+          <h2 class="founder-cta__title" id="connect-title">Let's Build Something Together.</h2>
+          <p class="founder-cta__desc">Whether you're a solo founder who needs the tools, a potential collaborator, press, or just someone who wants to say hi — I'd genuinely love to hear from you.</p>
+          <a href="./index.html#ecosystem" class="btn-holo" style="font-size:var(--text-sm);padding:12px 28px;">
+            Explore SoloSuccess Solutions →
+          </a>
+        </div>
+
+        <div>
+          <!-- Sign-off card -->
+          <div class="founder-signoff" style="margin-bottom: var(--sp8);">
+            <p class="founder-signoff__quote">"If you can't find it — build it. That's the whole philosophy."</p>
+            <p class="founder-signoff__name">— <span>Fran</span>, Founder · SoloSuccess Solutions</p>
+          </div>
+
+          <!-- Contact links -->
+          <div class="founder-cta__links">
+            <a href="./index.html#ecosystem" class="founder-cta-link" aria-label="Explore all products">
+              <div class="founder-cta-link__icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </div>
+              <div class="founder-cta-link__text">
+                <div class="founder-cta-link__label">Explore the Products</div>
+                <div class="founder-cta-link__sub">All 7 SoloSuccess tools →</div>
+              </div>
+              <svg class="founder-cta-link__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </a>
+
+            <a href="mailto:hello@solosuccess.co" class="founder-cta-link" aria-label="Send Fran an email">
+              <div class="founder-cta-link__icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="founder-cta-link__text">
+                <div class="founder-cta-link__label">Say Hello</div>
+                <div class="founder-cta-link__sub">hello@solosuccess.co</div>
+              </div>
+              <svg class="founder-cta-link__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </a>
+
+            <a href="./pages/solosuccess-ai.html" class="founder-cta-link" aria-label="Join the SoloSuccess AI waitlist">
+              <div class="founder-cta-link__icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="founder-cta-link__text">
+                <div class="founder-cta-link__label">Join the Waitlist</div>
+                <div class="founder-cta-link__sub">SoloSuccess AI · Early Access</div>
+              </div>
+              <svg class="founder-cta-link__arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo" style="background:var(--ink);border-top:3px solid var(--ink);padding-block:clamp(var(--sp10),5vw,var(--sp16));">
+  <div style="height:4px;background:var(--holo);background-size:200%;animation:holo-pan 5s ease infinite;margin-bottom:var(--sp10);"></div>
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--sp6);">
+      <a href="./index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+        <div style="width:32px;height:32px;overflow:hidden;flex-shrink:0;">
+          <img src="./assets/logo.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;"/>
+        </div>
+        <span style="font-family:var(--font-display);font-size:var(--text-base);font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;background:var(--holo);background-size:200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:holo-pan 5s ease infinite;">SoloSuccess Solutions</span>
+      </a>
+      <nav aria-label="Footer navigation" style="display:flex;gap:var(--sp6);">
+        <a href="./index.html#ecosystem" style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;">Products</a>
+        <a href="./index.html#about" style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;">About</a>
+        <a href="./founder.html" style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;">Founder</a>
+      </nav>
+      <p style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.25);letter-spacing:0.05em;">© 2026 SoloSuccess Solutions · Built by Fran</p>
+    </div>
+  </div>
+</footer>
+
+<!-- JS -->
+<script>
+(function(){
+  'use strict';
+  var burger   = document.getElementById('hamburger');
+  var mobileNav = document.getElementById('mobile-nav');
+  if (burger && mobileNav) {
+    burger.addEventListener('click', function(){
+      var open = mobileNav.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    mobileNav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        mobileNav.classList.remove('is-open');
+        burger.setAttribute('aria-expanded','false');
+        burger.setAttribute('aria-label','Open menu');
+      });
+    });
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var id=this.getAttribute('href');
+      if(id==='#') return;
+      var t=document.querySelector(id);
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+    });
+  });
+})();
+</script>
+<script src="./glitch.js" defer></script>
+<script src="./konami.js" defer></script>
+</body>
+</html>

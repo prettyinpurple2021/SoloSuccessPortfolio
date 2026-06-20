@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Building in Public — SoloSuccess Solutions</title>
+  <meta name="description" content="Fran builds in public. Follow the full journey — launches, mistakes, lessons, and product updates from SoloSuccess Solutions."/>
+
+  <link rel="preconnect" href="https://api.fontshare.com"/>
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,700,800,900&f[]=satoshi@400,500,700&f[]=jet-brains-mono@400,700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./base.css"/>
+  <link rel="stylesheet" href="./style.css"/>
+  <link rel="stylesheet" href="./blog.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111'/><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23ff4ec8'/><stop offset='50%25' stop-color='%23ffe800'/><stop offset='100%25' stop-color='%2300cfff'/></linearGradient></defs><text x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black' font-size='14' font-weight='900' fill='url(%23g)'>BIP</text></svg>"/>
+</head>
+<body>
+<a href="#main" class="sr-only">Skip to main content</a>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <span class="ticker__item">Building in Public</span>
+    <span class="ticker__item">Build Updates</span>
+    <span class="ticker__item">Lessons Learned</span>
+    <span class="ticker__item">Product Announcements</span>
+    <span class="ticker__item">Founder Thoughts</span>
+    <span class="ticker__item">SoloSuccess Solutions</span>
+    <span class="ticker__item">Building in Public</span>
+    <span class="ticker__item">Build Updates</span>
+    <span class="ticker__item">Lessons Learned</span>
+    <span class="ticker__item">Product Announcements</span>
+    <span class="ticker__item">Founder Thoughts</span>
+    <span class="ticker__item">SoloSuccess Solutions</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<header role="banner">
+  <nav class="nav" id="nav" aria-label="Main navigation">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="./index.html" class="nav__logo" aria-label="SoloSuccess Solutions home">
+          <div class="nav__logo-gem" style="width:38px;height:38px;border:2px solid var(--ink);overflow:hidden;flex-shrink:0;">
+            <img src="./assets/logo.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;mix-blend-mode:multiply;"/>
+          </div>
+          <div>
+            <span class="nav__logo-name">SoloSuccess Solutions</span>
+            <span class="nav__logo-sub">Building in Public</span>
+          </div>
+        </a>
+        <ul class="nav__links" role="list">
+          <li><a href="./index.html#ecosystem">Products</a></li>
+          <li><a href="./founder.html">Founder</a></li>
+          <li><a href="./blog.html" style="border-bottom:2px solid var(--ink);">Blog</a></li>
+        </ul>
+        <div class="nav__actions">
+          <a href="./index.html" class="btn-outline" style="font-size:var(--text-sm);padding:8px 16px;">← Back to Site</a>
+          <a href="./admin.html" class="btn-holo" style="font-size:var(--text-sm);padding:8px 16px;">+ New Post</a>
+          <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <nav class="nav__mobile" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="./index.html#ecosystem">Products</a>
+    <a href="./founder.html">Founder</a>
+    <a href="./blog.html">Blog</a>
+    <a href="./admin.html">+ New Post</a>
+    <a href="./index.html">← Back to Site</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="blog-hero" aria-labelledby="blog-title">
+    <div class="container">
+      <div class="blog-hero__inner">
+        <div class="blog-hero__text">
+          <p class="blog-hero__eyebrow">Building in Public</p>
+          <h1 class="blog-hero__title">
+            The Full<br/>
+            <span class="t-holo">Journey.</span>
+          </h1>
+          <p class="blog-hero__desc" id="blog-title">
+            No filters. No polish. Every build update, product launch, lesson learned, and founder thought — posted as it happens.
+          </p>
+          <div class="blog-hero__meta" role="list" id="hero-stats" aria-label="Blog statistics">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+        <!-- Featured posts panel -->
+        <div class="blog-hero__featured" id="featured-posts" aria-label="Featured posts">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTER BAR -->
+  <nav class="blog-filters" aria-label="Filter posts">
+    <div class="blog-filters__inner" id="filter-bar" role="list">
+      <!-- Populated by JS -->
+    </div>
+  </nav>
+
+  <!-- POST FEED -->
+  <section class="section" style="padding-top:var(--sp6);" aria-label="Post feed">
+    <div class="container">
+      <!-- Count strip -->
+      <div class="blog-count">
+        <p class="blog-count__text" id="post-count"></p>
+      </div>
+
+      <!-- Grid -->
+      <div class="post-grid" id="post-grid" role="list" aria-live="polite" aria-label="Blog posts">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Empty state -->
+      <div class="blog-empty" id="blog-empty" aria-live="polite">
+        <h2 class="blog-empty__title">No posts here yet.</h2>
+        <p class="blog-empty__desc">Try a different filter, or check back soon.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- POST MODAL -->
+<div class="post-modal-overlay" id="post-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+  <div class="post-modal" id="post-modal">
+    <div class="post-modal__header">
+      <div class="post-modal__header-meta">
+        <span class="post-modal__type" id="modal-type"></span>
+        <span style="color:rgba(255,255,255,0.2);font-size:12px;">·</span>
+        <span style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:0.06em;" id="modal-date"></span>
+      </div>
+      <button class="post-modal__close" id="modal-close" aria-label="Close post">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="post-modal__body">
+      <h2 class="post-modal__title" id="modal-title"></h2>
+      <p class="post-modal__date" id="modal-date-full"></p>
+      <div class="post-modal__content" id="modal-content"></div>
+      <div class="post-modal__tags" id="modal-tags"></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="footer__top-bar" aria-hidden="true"></div>
+  <div class="container">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--sp6);">
+      <a href="./index.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;">
+        <div style="width:32px;height:32px;overflow:hidden;flex-shrink:0;"><img src="./assets/logo.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;"/></div>
+        <span style="font-family:var(--font-display);font-size:var(--text-base);font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;background:var(--holo);background-size:200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:holo-pan 5s ease infinite;">SoloSuccess Solutions</span>
+      </a>
+      <nav style="display:flex;gap:var(--sp6);" aria-label="Footer navigation">
+        <a href="./index.html#ecosystem" style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;">Products</a>
+        <a href="./founder.html" style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;">Founder</a>
+        <a href="./blog.html" style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.7);text-decoration:none;">Blog</a>
+        <a href="./admin.html" style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.45);text-decoration:none;">Admin</a>
+      </nav>
+      <p style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.25);letter-spacing:0.05em;">© 2026 SoloSuccess Solutions · Built by Fran</p>
+    </div>
+  </div>
+</footer>
+
+<script src="./blog.js"></script>
+<script>
+(function(){
+  'use strict';
+  var burger = document.getElementById('hamburger');
+  var mNav   = document.getElementById('mobile-nav');
+  if (burger && mNav) {
+    burger.addEventListener('click', function(){
+      var open = mNav.classList.toggle('is-open');
+      burger.setAttribute('aria-expanded', String(open));
+    });
+    mNav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ mNav.classList.remove('is-open'); burger.setAttribute('aria-expanded','false'); });
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,488 @@
+/* ============================================================
+   MOBILE.CSS — Touch-First Carousel + Y2K Drawer
+   Only activates at ≤ 700px (matches existing breakpoint)
+   Preserves Y2K scrapbook aesthetic throughout
+   ============================================================ */
+
+/* ── Variables ──────────────────────────────────────────── */
+:root {
+  --drawer-width: min(88vw, 320px);
+  --carousel-gap: 16px;
+  --dot-size: 8px;
+}
+
+/* ============================================================
+   CAROUSEL SYSTEM
+   On mobile the .scrap-grid is replaced by a horizontal
+   scroll-snap track. Each .scrap-card becomes a full-width
+   slide. The rotations/transforms are stripped so the card
+   sits flat and readable — the glitch effects stay.
+   ============================================================ */
+@media (max-width: 700px) {
+
+  /* ── Kill the grid, become a carousel viewport ───────────── */
+  .scrap-grid {
+    display: block !important;       /* override grid */
+    position: relative;
+  }
+
+  /* Carousel track — injected by JS as .carousel-track */
+  .carousel-track {
+    display: flex;
+    gap: var(--carousel-gap);
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    /* Hide scrollbar — navigation handled by dots + swipe */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 8px; /* room for box-shadow */
+    /* extend slightly outside container for edge peek effect */
+    margin-inline: calc(-1 * clamp(16px, 5vw, 64px));
+    padding-inline: clamp(16px, 5vw, 64px);
+  }
+  .carousel-track::-webkit-scrollbar { display: none; }
+
+  /* Each card = one slide */
+  .carousel-track .scrap-card {
+    flex: 0 0 calc(85vw);
+    max-width: 360px;
+    scroll-snap-align: center;
+    /* Reset desktop rotations — flat on mobile */
+    transform: none !important;
+    transition: transform 280ms cubic-bezier(0.16,1,0.3,1),
+                box-shadow 280ms cubic-bezier(0.16,1,0.3,1),
+                opacity 280ms ease;
+    opacity: 0.88;
+    position: relative;
+  }
+
+  /* Active (centred) slide pops forward */
+  .carousel-track .scrap-card.is-active {
+    opacity: 1;
+    transform: scale(1.02) !important;
+  }
+
+  /* Tap = glitch trigger; provide visual active state */
+  .carousel-track .scrap-card.is-tapped {
+    transform: scale(0.98) !important;
+    transition-duration: 80ms;
+  }
+
+  /* Paper fills the slide — no tiny padding differences */
+  .carousel-track .scrap-card__paper {
+    height: 100%;
+  }
+
+  /* ── Dot navigation ──────────────────────────────────────── */
+  .carousel-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding-block: 20px 4px;
+  }
+
+  .carousel-dot {
+    width: var(--dot-size);
+    height: var(--dot-size);
+    border: 2px solid #111;
+    background: transparent;
+    border-radius: 0; /* Y2K: square dots */
+    cursor: pointer;
+    padding: 0;
+    transition: background 160ms ease, transform 160ms ease, width 200ms ease;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Holographic shimmer on active dot */
+  .carousel-dot.is-active {
+    width: 22px; /* stretch active dot */
+    background: linear-gradient(
+      90deg,
+      #ff4ec8 0%, #ff9a00 25%, #ffe800 50%, #00cfff 75%, #7c4dff 100%
+    );
+    background-size: 200%;
+    animation: dot-holo 2s linear infinite;
+    border-color: #111;
+  }
+  @keyframes dot-holo {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+
+  .carousel-dot:hover:not(.is-active) {
+    background: #111;
+    transform: scale(1.2);
+  }
+
+  /* ── Swipe hint: first load only ─────────────────────────── */
+  .carousel-hint {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.35);
+    padding-bottom: 4px;
+    animation: hint-fade 3.5s ease 1.2s forwards;
+    opacity: 1;
+  }
+  @keyframes hint-fade {
+    0%   { opacity: 1; }
+    70%  { opacity: 1; }
+    100% { opacity: 0; pointer-events: none; }
+  }
+  .carousel-hint svg { flex-shrink: 0; }
+
+  /* ── Card counter badge ───────────────────────────────────── */
+  .carousel-counter {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: rgba(0,0,0,0.4);
+    text-align: center;
+    padding-bottom: 2px;
+  }
+  .carousel-counter strong {
+    background: linear-gradient(90deg, #ff4ec8, #00cfff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+} /* end @media ≤700px */
+
+/* ============================================================
+   Y2K NAVIGATION DRAWER
+   Full-height slide-in panel from the right.
+   Replaces the old .nav__mobile overlay.
+   Works at ALL screen sizes that show the hamburger.
+   ============================================================ */
+
+/* ── Overlay ─────────────────────────────────────────────── */
+.drawer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 290;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+.drawer-overlay.is-open {
+  display: block;
+  opacity: 1;
+}
+
+/* ── Drawer panel ────────────────────────────────────────── */
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 300;
+  width: var(--drawer-width);
+  background: #fdfcf8;
+  border-left: 3px solid #111;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 320ms cubic-bezier(0.16, 1, 0.3, 1);
+  /* Y2K texture */
+  background-image: radial-gradient(circle, rgba(0,0,0,0.055) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.drawer.is-open {
+  transform: translateX(0);
+}
+
+/* Holo top bar */
+.drawer::before {
+  content: '';
+  display: block;
+  height: 4px;
+  flex-shrink: 0;
+  background: linear-gradient(90deg, #ff4ec8 0%, #ff9a00 20%, #ffe800 40%, #00e676 60%, #00cfff 80%, #7c4dff 100%);
+  background-size: 200%;
+  animation: dot-holo 3s linear infinite;
+}
+
+/* ── Drawer header ───────────────────────────────────────── */
+.drawer__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 2px solid rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+.drawer__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.drawer__logo-gem {
+  width: 32px; height: 32px;
+  border: 2px solid #111;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.drawer__logo-gem img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;
+  mix-blend-mode: multiply;
+}
+.drawer__logo-name {
+  font-family: 'Cabinet Grotesk', 'Arial Black', sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #111;
+  line-height: 1.2;
+}
+.drawer__close {
+  width: 36px; height: 36px;
+  border: 2px solid #111;
+  display: flex; align-items: center; justify-content: center;
+  background: transparent;
+  cursor: pointer;
+  color: #111;
+  flex-shrink: 0;
+  transition: background 160ms ease;
+}
+.drawer__close:hover { background: #f0ece0; }
+
+/* ── Drawer sections ─────────────────────────────────────── */
+.drawer__body {
+  flex: 1;
+  padding: 8px 0;
+  overflow-y: auto;
+}
+
+.drawer__section-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.35);
+  padding: 16px 20px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.drawer__section-title::before {
+  content: '';
+  display: block;
+  width: 14px; height: 2px;
+  background: linear-gradient(90deg, #ff4ec8, #00cfff);
+  flex-shrink: 0;
+}
+
+/* Navigation links */
+.drawer__nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  font-family: 'Cabinet Grotesk', 'Arial Black', sans-serif;
+  font-size: 15px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: #111;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  position: relative;
+  overflow: hidden;
+  transition: background 160ms ease, color 160ms ease;
+  /* touch target */
+  min-height: 52px;
+}
+.drawer__nav-link:last-child { border-bottom: none; }
+
+/* Left colour tag */
+.drawer__nav-link::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--link-color, #111);
+  transform: scaleY(0);
+  transition: transform 160ms ease;
+  transform-origin: center;
+}
+.drawer__nav-link:hover::before,
+.drawer__nav-link:focus-visible::before {
+  transform: scaleY(1);
+}
+.drawer__nav-link:hover {
+  background: rgba(0,0,0,0.03);
+  padding-left: 26px;
+}
+
+.drawer__nav-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: rgba(0,0,0,0.3);
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+.drawer__nav-label { flex: 1; }
+.drawer__nav-arrow {
+  opacity: 0.25;
+  transition: opacity 160ms ease, transform 160ms ease;
+  flex-shrink: 0;
+}
+.drawer__nav-link:hover .drawer__nav-arrow {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+/* Product links — each gets its own accent colour */
+.drawer__nav-link[data-product="ai"]      { --link-color: #ff4ec8; }
+.drawer__nav-link[data-product="academy"] { --link-color: #00cfff; }
+.drawer__nav-link[data-product="content"] { --link-color: #ff9a00; }
+.drawer__nav-link[data-product="scribe"]  { --link-color: #7c4dff; }
+.drawer__nav-link[data-product="design"]  { --link-color: #ffe800; }
+.drawer__nav-link[data-product="scout"]   { --link-color: #00e676; }
+.drawer__nav-link[data-product="connect"] { --link-color: #ff4444; }
+
+/* ── Drawer footer ───────────────────────────────────────── */
+.drawer__footer {
+  padding: 16px 20px;
+  border-top: 2px solid rgba(0,0,0,0.1);
+  flex-shrink: 0;
+}
+.drawer__footer-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  font-family: 'Cabinet Grotesk', 'Arial Black', sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  background: linear-gradient(105deg, #ff4ec8, #ff9a00, #ffe800, #00cfff, #7c4dff, #ff4ec8);
+  background-size: 300%;
+  animation: dot-holo 4s linear infinite;
+  border: 2.5px solid #111;
+  box-shadow: 3px 3px 0 #111;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  min-height: 52px;
+}
+.drawer__footer-cta:hover {
+  transform: translate(-2px,-2px);
+  box-shadow: 5px 5px 0 #111;
+}
+.drawer__footer-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: rgba(0,0,0,0.35);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 8px;
+}
+
+/* ── Hide old mobile nav (replaced by drawer) ────────────── */
+.nav__mobile { display: none !important; }
+
+/* ── Tap glitch: mobile-specific CSS ────────────────────────
+   When JS adds .is-glitching to a card on tap, fire the
+   same effect set as hover but without needing :hover
+   ─────────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .scrap-card.is-glitching .scrap-card__name {
+    text-shadow:
+      -2px 0 0 rgba(0,220,255,0.7),
+       2px 0 0 rgba(255,0,180,0.7);
+    animation: rgb-jitter 0.18s steps(1) 3 forwards;
+  }
+  .scrap-card.is-glitching .scrap-card__inner {
+    animation: filter-burst 0.5s ease forwards;
+  }
+  .scrap-card.is-glitching .scrap-card__icon {
+    animation: icon-glitch 0.4s steps(2) 1 forwards;
+  }
+  .scrap-card.is-glitching .scrap-card__scanlines {
+    opacity: 1;
+    animation-duration: 1.5s;
+  }
+  .scrap-card.is-glitching .scrap-card__noise {
+    opacity: 0.9;
+    animation-duration: 0.05s;
+  }
+  .scrap-card.is-glitching .scrap-card__badge {
+    opacity: 1;
+    color: #ff00cc;
+    animation: badge-blink 0.4s steps(1) 4 forwards;
+  }
+  .scrap-card.is-glitching .scrap-card__inner::after {
+    animation: glitch-hover 0.6s steps(1) 2 forwards;
+  }
+  .scrap-card.is-glitching .scrap-card__paper {
+    animation: paper-tint 0.5s ease forwards;
+  }
+
+  /* Prevent double-triggering desktop hover on touch */
+  .scrap-card:hover .scrap-card__name { text-shadow: none; animation: none; }
+  .scrap-card:hover .scrap-card__inner { animation: none; filter: none; }
+  .scrap-card:hover .scrap-card__icon { animation: none; }
+  .scrap-card:hover .scrap-card__paper { animation: none; filter: none; }
+}
+
+/* ── Body scroll lock when drawer open ───────────────────── */
+body.drawer-open {
+  overflow: hidden;
+}
+
+/* ── Focus visible fix for drawer links ─────────────────── */
+.drawer__nav-link:focus-visible,
+.drawer__close:focus-visible,
+.drawer__footer-cta:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+/* ── Reduce motion ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .drawer, .drawer-overlay,
+  .carousel-track .scrap-card,
+  .carousel-dot {
+    transition: none !important;
+    animation: none !important;
+  }
+  .scrap-card.is-glitching .scrap-card__name,
+  .scrap-card.is-glitching .scrap-card__inner,
+  .scrap-card.is-glitching .scrap-card__icon,
+  .scrap-card.is-glitching .scrap-card__paper {
+    animation: none !important;
+    filter: none !important;
+    text-shadow: none !important;
+  }
+}
