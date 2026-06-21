@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>404 — Page Not Found · SoloSuccess Solutions</title>
+  <link rel="preconnect" href="https://api.fontshare.com"/>
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,700,900&f[]=satoshi@400,700&f[]=jet-brains-mono@700&display=swap" rel="stylesheet"/>
+  <link rel="icon" type="image/png" href="./assets/favicon.png"/>
+  <link rel="stylesheet" href="./base.css"/>
+  <link rel="stylesheet" href="./style.css"/>
+  <style>
+    body { min-height: 100dvh; display: flex; flex-direction: column; }
+    .error-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(var(--sp16),10vw,var(--sp24));
+      position: relative;
+      overflow: hidden;
+    }
+    .error-wrap::before {
+      content: '404';
+      position: absolute;
+      font-family: var(--font-display);
+      font-size: clamp(180px, 30vw, 380px);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      color: var(--ink);
+      opacity: 0.04;
+      pointer-events: none;
+      user-select: none;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
+    .error-card {
+      position: relative;
+      z-index: 1;
+      background: var(--paper-2);
+      border: 3px solid var(--ink);
+      box-shadow: 8px 8px 0 var(--ink);
+      padding: clamp(var(--sp8), 6vw, var(--sp16));
+      max-width: 560px;
+      width: 100%;
+      transform: rotate(-1.5deg);
+      text-align: center;
+    }
+    /* Holo tape at top */
+    .error-card::before {
+      content: '';
+      position: absolute;
+      top: -12px; left: 50%;
+      transform: translateX(-50%) rotate(-1deg);
+      width: 80px; height: 22px;
+      background: var(--holo); background-size: 200%;
+      animation: holo-pan 4s ease infinite;
+      opacity: 0.7;
+      border-top: 1px solid rgba(0,0,0,0.1);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+    .error-num {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-light); margin-bottom: var(--sp4);
+    }
+    .error-title {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl); font-weight: 900;
+      text-transform: uppercase; letter-spacing: -0.025em;
+      color: var(--ink); line-height: 1.05;
+      margin-bottom: var(--sp4);
+    }
+    .error-title .t-holo {
+      background: var(--holo); background-size: 200%;
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: holo-pan 5s ease infinite;
+    }
+    .error-desc {
+      font-size: var(--text-base); color: var(--ink-mid);
+      line-height: 1.65; margin-bottom: var(--sp8);
+      max-width: 36ch; margin-inline: auto;
+    }
+    .error-links {
+      display: flex; gap: var(--sp4);
+      justify-content: center; flex-wrap: wrap;
+    }
+    /* Countdown */
+    .error-countdown {
+      font-family: var(--font-mono); font-size: 10px;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-light); margin-top: var(--sp6);
+    }
+    .error-countdown span { color: var(--ink); font-weight: 700; }
+    /* Floating stickers */
+    .e-sticker {
+      position: absolute; z-index: 2;
+      font-family: var(--font-mono); font-size: 9px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 10px; border: 2px solid var(--ink);
+      box-shadow: 2px 2px 0 var(--ink); pointer-events: none;
+    }
+    .es1 { top: 12%; right: 8%; background: var(--paper-1); transform: rotate(5deg); }
+    .es2 { bottom: 14%; left: 6%; background: var(--paper-3); transform: rotate(-3deg); }
+  </style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <span class="ticker__item">404 — Lost in the Matrix</span>
+    <span class="ticker__item">Page Not Found</span>
+    <span class="ticker__item">SoloSuccess Solutions</span>
+    <span class="ticker__item">This path doesn't compute</span>
+    <span class="ticker__item">404 — Lost in the Matrix</span>
+    <span class="ticker__item">Page Not Found</span>
+    <span class="ticker__item">SoloSuccess Solutions</span>
+    <span class="ticker__item">This path doesn't compute</span>
+  </div>
+</div>
+
+<nav class="nav" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav__inner">
+      <a href="./index.html" class="nav__logo" aria-label="SoloSuccess Solutions home">
+        <div class="nav__logo-gem" style="width:38px;height:38px;border:2px solid var(--ink);overflow:hidden;flex-shrink:0;">
+          <img src="./assets/logo.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:50% 30%;mix-blend-mode:multiply;"/>
+        </div>
+        <div>
+          <span class="nav__logo-name">SoloSuccess Solutions</span>
+          <span class="nav__logo-sub">Page not found</span>
+        </div>
+      </a>
+      <div class="nav__actions">
+        <a href="./index.html" class="btn-holo" style="font-size:var(--text-sm);padding:8px 20px;">← Back Home</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="error-wrap" role="main">
+  <div class="e-sticker es1" aria-hidden="true">Error 404 ✦</div>
+  <div class="e-sticker es2" aria-hidden="true">Lost.exe</div>
+
+  <div class="error-card" role="alert">
+    <div class="error-num">Error 404 · Page Not Found</div>
+    <h1 class="error-title">
+      This page<br/>
+      <span class="t-holo">doesn't exist.</span>
+    </h1>
+    <p class="error-desc">
+      Even the best solo founders take a wrong turn sometimes. Let's get you back on track.
+    </p>
+    <div class="error-links">
+      <a href="./index.html" class="btn-holo" style="font-size:var(--text-sm);padding:10px 24px;">← Back Home</a>
+      <a href="./index.html#ecosystem" class="btn-outline" style="font-size:var(--text-sm);padding:10px 24px;">Explore Products</a>
+      <a href="./blog.html" class="btn-outline" style="font-size:var(--text-sm);padding:10px 24px;">Read the Blog</a>
+    </div>
+    <p class="error-countdown">
+      Auto-redirecting in <span id="count">10</span>s
+    </p>
+  </div>
+</div>
+
+<script>
+var n = 10;
+var el = document.getElementById('count');
+var iv = setInterval(function(){
+  n--;
+  if (el) el.textContent = n;
+  if (n <= 0) { clearInterval(iv); window.location.href = './index.html'; }
+}, 1000);
+</script>
+</body>
+</html>

@@ -4,6 +4,13 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Building in Public — SoloSuccess Solutions</title>
+  <link rel="icon" type="image/png" href="./assets/favicon.png"/>
+  <meta property="og:image" content="./assets/og-image.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:site" content="@solosuccessai"/>
+  <meta name="twitter:image" content="./assets/og-image.png"/>
   <meta name="description" content="Fran builds in public. Follow the full journey — launches, mistakes, lessons, and product updates from SoloSuccess Solutions."/>
 
   <link rel="preconnect" href="https://api.fontshare.com"/>
@@ -11,7 +18,7 @@
   <link rel="stylesheet" href="./base.css"/>
   <link rel="stylesheet" href="./style.css"/>
   <link rel="stylesheet" href="./blog.css"/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23111'/><defs><linearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%23ff4ec8'/><stop offset='50%25' stop-color='%23ffe800'/><stop offset='100%25' stop-color='%2300cfff'/></linearGradient></defs><text x='50%25' y='56%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black' font-size='14' font-weight='900' fill='url(%23g)'>BIP</text></svg>"/>
+
 </head>
 <body>
 <a href="#main" class="sr-only">Skip to main content</a>
@@ -147,6 +154,22 @@
       <p class="post-modal__date" id="modal-date-full"></p>
       <div class="post-modal__content" id="modal-content"></div>
       <div class="post-modal__tags" id="modal-tags"></div>
+      <div style="display:flex;gap:var(--sp3);margin-top:var(--sp5);padding-top:var(--sp4);border-top:1px solid var(--border-light);align-items:center;flex-wrap:wrap;">
+        <a id="modal-share-x" href="#" target="_blank" rel="noopener noreferrer"
+          style="display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:6px 14px;border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink);background:var(--bg);color:var(--ink);text-decoration:none;transition:transform 0.15s ease,box-shadow 0.15s ease;"
+          onmouseover="this.style.transform='translate(-2px,-2px)';this.style.boxShadow='4px 4px 0 var(--ink)'"
+          onmouseout="this.style.transform='';this.style.boxShadow='2px 2px 0 var(--ink)'">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.632zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Share on X
+        </a>
+        <button id="modal-copy-link"
+          style="display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:6px 14px;border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink);background:var(--bg);color:var(--ink);cursor:pointer;transition:transform 0.15s ease,box-shadow 0.15s ease;"
+          onmouseover="this.style.transform='translate(-2px,-2px)';this.style.boxShadow='4px 4px 0 var(--ink)'"
+          onmouseout="this.style.transform='';this.style.boxShadow='2px 2px 0 var(--ink)'">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+          Copy Link
+        </button>
+      </div>
     </div>
   </div>
 </div>

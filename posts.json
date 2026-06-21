@@ -5,24 +5,32 @@
     "slug": "why-i-started-solosuccess",
     "type": "founder-thoughts",
     "product": "general",
-    "date": "2024-03-01",
+    "date": "2025-12-15",
     "excerpt": "I spent weeks searching for software built for solo founders. It didn't exist. So I stopped searching and started building.",
-    "body": "I was deep in the process of building my own SaaS — no co-founder, no team, no roadmap. I had the technical skills and the vision. What I didn't have was a system. I needed something to help me stay organized, know what to do next, and actually get to launch without burning out or going in circles.\n\nSo I searched. Product Hunt. Reddit. Google. App directories. Startup forums. I looked everywhere for software specifically designed for the solo founder experience.\n\nIt wasn't there.\n\nEverything I found was designed for teams. Or enterprises. Or developers. Or it was so generic it might as well have been a blank notepad. Nobody had built the thing I needed.\n\nThat was the moment SoloSuccess Solutions was born. If the tool didn't exist, I'd build it. Seven products later, that's exactly what happened.",
-    "tags": ["Origin Story", "Building Solo", "Why We Built This"],
+    "body": "I was deep in the process of building my own SaaS \u2014 no co-founder, no team, no roadmap. I had the technical skills and the vision. What I didn't have was a system. I needed something to help me stay organized, know what to do next, and actually get to launch without burning out or going in circles.\n\nSo I searched. Product Hunt. Reddit. Google. App directories. Startup forums. I looked everywhere for software specifically designed for the solo founder experience.\n\nIt wasn't there.\n\nEverything I found was designed for teams. Or enterprises. Or developers. Or it was so generic it might as well have been a blank notepad. Nobody had built the thing I needed.\n\nThat was the moment SoloSuccess Solutions was born. If the tool didn't exist, I'd build it. Seven products later, that's exactly what happened.",
+    "tags": [
+      "Origin Story",
+      "Building Solo",
+      "Why We Built This"
+    ],
     "color": "#ff4ec8",
     "paperColor": "#fce4ec",
     "featured": true
   },
   {
     "id": "002",
-    "title": "Academy v1 shipped — here's what we learned",
+    "title": "Academy v1 shipped \u2014 here's what we learned",
     "slug": "academy-v1-shipped",
     "type": "build-update",
     "product": "academy",
-    "date": "2024-06-15",
+    "date": "2026-02-28",
     "excerpt": "SoloSuccess Academy is live. Here's everything we built, everything we cut, and what's coming in v2.",
-    "body": "Academy is live. After months of planning, building, and rebuilding the curriculum engine, we shipped v1 today.\n\nWhat made it in: adaptive course paths, 20 foundational modules, the founder playbook library, and basic AI study partner integration.\n\nWhat got cut for v2: live workshops (we weren't ready to run them well), cohort features, and the full certification system. We made the call to ship something excellent rather than something complete.\n\nThe biggest lesson: curriculum is a product, not just content. Getting the adaptive logic right took 3x longer than expected. We're glad we invested the time — the early feedback has been strong.\n\nv2 is already planned. Live workshops first, then cohorts.",
-    "tags": ["Launch", "Product Update", "Lessons"],
+    "body": "Academy is live. After months of planning, building, and rebuilding the curriculum engine, we shipped v1 today.\n\nWhat made it in: adaptive course paths, 20 foundational modules, the founder playbook library, and basic AI study partner integration.\n\nWhat got cut for v2: live workshops (we weren't ready to run them well), cohort features, and the full certification system. We made the call to ship something excellent rather than something complete.\n\nThe biggest lesson: curriculum is a product, not just content. Getting the adaptive logic right took 3x longer than expected. We're glad we invested the time \u2014 the early feedback has been strong.\n\nv2 is already planned. Live workshops first, then cohorts.",
+    "tags": [
+      "Launch",
+      "Product Update",
+      "Lessons"
+    ],
     "color": "#00cfff",
     "paperColor": "#e3f2fd",
     "featured": false
@@ -33,10 +41,14 @@
     "slug": "content-factory-launch",
     "type": "build-update",
     "product": "content-factory",
-    "date": "2024-08-20",
+    "date": "2026-03-20",
     "excerpt": "We built Content Factory faster than any other product. Here's the full breakdown of how and why.",
-    "body": "Content Factory was our fastest build yet — 6 weeks from whiteboard to live product. Here's how we did it.\n\nThe insight was simple: solo founders don't lack ideas, they lack time to turn one idea into 10 pieces of content. The product just needed to nail that core loop.\n\nWe focused entirely on the content expansion engine first. Input → multiple platform outputs → brand voice preservation. Everything else — scheduling, analytics, team features — came second.\n\nThe repurposing engine was the hardest part. Getting the AI to understand that a LinkedIn post and a Twitter thread need completely different structures, not just different lengths, took multiple iterations.\n\nWe shipped with 5 platform types. We now support 12. The lesson: launch narrow and expand based on what users actually use.",
-    "tags": ["Launch", "Build Log", "Content"],
+    "body": "Content Factory was our fastest build yet \u2014 6 weeks from whiteboard to live product. Here's how we did it.\n\nThe insight was simple: solo founders don't lack ideas, they lack time to turn one idea into 10 pieces of content. The product just needed to nail that core loop.\n\nWe focused entirely on the content expansion engine first. Input \u2192 multiple platform outputs \u2192 brand voice preservation. Everything else \u2014 scheduling, analytics, team features \u2014 came second.\n\nThe repurposing engine was the hardest part. Getting the AI to understand that a LinkedIn post and a Twitter thread need completely different structures, not just different lengths, took multiple iterations.\n\nWe shipped with 5 platform types. We now support 12. The lesson: launch narrow and expand based on what users actually use.",
+    "tags": [
+      "Launch",
+      "Build Log",
+      "Content"
+    ],
     "color": "#ff9a00",
     "paperColor": "#fff3e0",
     "featured": false
@@ -47,38 +59,50 @@
     "slug": "the-mistake-that-cost-3-weeks",
     "type": "lessons-learned",
     "product": "general",
-    "date": "2024-09-10",
+    "date": "2026-04-05",
     "excerpt": "We over-engineered the database layer for SoloScribe before we had a single user. Here's what we'd do differently.",
     "body": "This one hurt. Before we had a single user for SoloScribe, we spent three weeks architecting a database schema for a scale we hadn't earned yet.\n\nWe were thinking about multi-tenancy, sharding, complex relational structures for document versioning. All of it technically correct. None of it necessary.\n\nWhen we finally launched and got real users, their actual usage patterns were completely different from what we'd designed for. We had to refactor half of what we'd built anyway.\n\nThe lesson we keep learning (and apparently need to keep relearning): build for the users you have, not the users you imagine having. Premature optimization is just procrastination wearing an engineering hat.\n\nWe now have a rule: no scaling infrastructure until we hit a real scaling problem. Constraints are a feature, not a bug.",
-    "tags": ["Mistakes", "Engineering", "Lessons"],
+    "tags": [
+      "Mistakes",
+      "Engineering",
+      "Lessons"
+    ],
     "color": "#c87af9",
     "paperColor": "#f3e5f5",
     "featured": false
   },
   {
     "id": "005",
-    "title": "SoloScribe is live — write like you have a team",
+    "title": "SoloScribe is live \u2014 write like you have a team",
     "slug": "soloscribe-live",
     "type": "product-announcement",
     "product": "soloscribe",
-    "date": "2024-11-05",
-    "excerpt": "SoloScribe officially launched today. Voice matching, long-form AI, and persistent context — all built for solo founders who write alone.",
-    "body": "SoloScribe is officially live.\n\nThis one is personal. As someone building seven products solo, writing has always been the bottleneck. Proposals, blog posts, documentation, newsletters — it all takes time I don't have.\n\nSoloScribe started as a personal tool. I needed something that actually sounded like me, remembered my business context, and could handle documents longer than a tweet.\n\nThe voice matching engine is what I'm most proud of. Upload three samples of your writing and SoloScribe builds a voice profile that persists across every document. It's not perfect — no AI voice matching is — but it's dramatically better than anything else we tried.\n\nFree tier available today. Builder plan unlocks everything. Go build something.",
-    "tags": ["Launch", "Writing", "Product Announcement"],
+    "date": "2026-04-18",
+    "excerpt": "SoloScribe officially launched today. Voice matching, long-form AI, and persistent context \u2014 all built for solo founders who write alone.",
+    "body": "SoloScribe is officially live.\n\nThis one is personal. As someone building seven products solo, writing has always been the bottleneck. Proposals, blog posts, documentation, newsletters \u2014 it all takes time I don't have.\n\nSoloScribe started as a personal tool. I needed something that actually sounded like me, remembered my business context, and could handle documents longer than a tweet.\n\nThe voice matching engine is what I'm most proud of. Upload three samples of your writing and SoloScribe builds a voice profile that persists across every document. It's not perfect \u2014 no AI voice matching is \u2014 but it's dramatically better than anything else we tried.\n\nFree tier available today. Builder plan unlocks everything. Go build something.",
+    "tags": [
+      "Launch",
+      "Writing",
+      "Product Announcement"
+    ],
     "color": "#c87af9",
     "paperColor": "#f3e5f5",
     "featured": true
   },
   {
     "id": "006",
-    "title": "SoloDesign ships — no designer required",
+    "title": "SoloDesign ships \u2014 no designer required",
     "slug": "solodesign-ships",
     "type": "product-announcement",
     "product": "solodesign",
-    "date": "2025-01-18",
-    "excerpt": "Our fourth live product just launched. Describe what you need — SoloDesign delivers polished visual assets in minutes.",
-    "body": "SoloDesign is live. Product four of seven is officially out the door.\n\nThis one took longer than expected because visual quality is unforgiving. Users can tolerate a mediocre strategy suggestion. They can't tolerate a mediocre graphic representing their brand.\n\nWe rebuilt the generation pipeline twice before we were happy with the output quality. The brand kit extraction engine — the part that pulls your colors, fonts, and style from an uploaded logo — was the hardest technical challenge we've tackled so far.\n\nWhat's live today: brand kit generator, social asset engine, 500+ templates, one-click resize. The pitch deck builder ships in the next update.\n\nIf you've been doing your own design because you couldn't afford a designer, this one's for you.",
-    "tags": ["Launch", "Design", "Product Announcement"],
+    "date": "2026-04-28",
+    "excerpt": "Our fourth live product just launched. Describe what you need \u2014 SoloDesign delivers polished visual assets in minutes.",
+    "body": "SoloDesign is live. Product four of seven is officially out the door.\n\nThis one took longer than expected because visual quality is unforgiving. Users can tolerate a mediocre strategy suggestion. They can't tolerate a mediocre graphic representing their brand.\n\nWe rebuilt the generation pipeline twice before we were happy with the output quality. The brand kit extraction engine \u2014 the part that pulls your colors, fonts, and style from an uploaded logo \u2014 was the hardest technical challenge we've tackled so far.\n\nWhat's live today: brand kit generator, social asset engine, 500+ templates, one-click resize. The pitch deck builder ships in the next update.\n\nIf you've been doing your own design because you couldn't afford a designer, this one's for you.",
+    "tags": [
+      "Launch",
+      "Design",
+      "Product Announcement"
+    ],
     "color": "#ffe800",
     "paperColor": "#fffde7",
     "featured": false
@@ -89,10 +113,14 @@
     "slug": "building-in-public-why",
     "type": "founder-thoughts",
     "product": "general",
-    "date": "2025-03-22",
-    "excerpt": "Transparency is a strategy, not just a personality trait. Here's why I share the full picture — wins, losses, and everything in between.",
-    "body": "I get asked a lot why I share so much — the mistakes, the timelines, the failed experiments. Isn't that giving away competitive advantage?\n\nHere's my take: building in public isn't charity. It's a compounding strategy.\n\nEvery honest post about a mistake attracts founders who've made the same mistake. Every launch post reaches people who needed exactly that product. Every lesson learned turns into trust with the people I'm trying to serve.\n\nSolo founders are chronically undersupported. There's almost no honest content about what it actually feels like to build alone — the uncertainty, the context-switching, the moments where you genuinely don't know what to do next.\n\nI share everything because I wish someone had shared it with me when I was starting out. The best way to repay that is to be the resource I never had.\n\nThat's what this blog is for.",
-    "tags": ["Philosophy", "Building in Public", "Transparency"],
+    "date": "2026-05-10",
+    "excerpt": "Transparency is a strategy, not just a personality trait. Here's why I share the full picture \u2014 wins, losses, and everything in between.",
+    "body": "I get asked a lot why I share so much \u2014 the mistakes, the timelines, the failed experiments. Isn't that giving away competitive advantage?\n\nHere's my take: building in public isn't charity. It's a compounding strategy.\n\nEvery honest post about a mistake attracts founders who've made the same mistake. Every launch post reaches people who needed exactly that product. Every lesson learned turns into trust with the people I'm trying to serve.\n\nSolo founders are chronically undersupported. There's almost no honest content about what it actually feels like to build alone \u2014 the uncertainty, the context-switching, the moments where you genuinely don't know what to do next.\n\nI share everything because I wish someone had shared it with me when I was starting out. The best way to repay that is to be the resource I never had.\n\nThat's what this blog is for.",
+    "tags": [
+      "Philosophy",
+      "Building in Public",
+      "Transparency"
+    ],
     "color": "#ff4ec8",
     "paperColor": "#fce4ec",
     "featured": true
