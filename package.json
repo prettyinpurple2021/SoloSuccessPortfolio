@@ -1,30 +1,30 @@
 {
   "name": "solosuccessportfolio",
   "version": "1.0.0",
-  "description": "",
-  "main": "blog.js",
+  "description": "Static marketing site and blog for SoloSuccess Solutions.",
+  "main": "build_pages.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate:pages": "node build_pages.js",
+    "preview": "python3 -m http.server 4173",
+    "check:site": "node scripts/check-site.js",
+    "check:links": "node scripts/check-links.js",
+    "validate": "npm run generate:pages && npm run check:site && npm run check:links",
+    "test": "npm run validate"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/prettyinpurple2021/SoloSuccessPortfolio.git"
   },
-  "keywords": [],
+  "keywords": [
+    "static-site",
+    "portfolio",
+    "solo-founder"
+  ],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/prettyinpurple2021/SoloSuccessPortfolio/issues"
   },
-  "homepage": "https://github.com/prettyinpurple2021/SoloSuccessPortfolio#readme",
-  "devDependencies": {
-    "@aws-amplify/backend": "^1.23.0",
-    "@aws-amplify/backend-cli": "^1.8.3",
-    "aws-cdk-lib": "^2.244.0",
-    "constructs": "^10.6.0",
-    "esbuild": "^0.28.1",
-    "tsx": "^4.22.4",
-    "typescript": "^5.9.3"
-  }
+  "homepage": "https://github.com/prettyinpurple2021/SoloSuccessPortfolio#readme"
 }

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+
+Sitemap: https://prettyinpurple2021.github.io/SoloSuccessPortfolio/sitemap.xml

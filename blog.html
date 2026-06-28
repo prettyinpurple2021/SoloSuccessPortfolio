@@ -5,13 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Building in Public — SoloSuccess Solutions</title>
   <link rel="icon" type="image/png" href="./assets/favicon.png"/>
-  <meta property="og:image" content="./assets/og-image.png"/>
+  <link rel="canonical" href="https://prettyinpurple2021.github.io/SoloSuccessPortfolio/blog.html"/>
+  <meta name="description" content="Fran builds in public. Follow the full journey — launches, mistakes, lessons, and product updates from SoloSuccess Solutions."/>
+  <meta property="og:title" content="Building in Public — SoloSuccess Solutions"/>
+  <meta property="og:description" content="Follow launches, lessons learned, and founder thoughts from SoloSuccess Solutions."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://prettyinpurple2021.github.io/SoloSuccessPortfolio/blog.html"/>
+  <meta property="og:image" content="https://prettyinpurple2021.github.io/SoloSuccessPortfolio/assets/og-image.png"/>
   <meta property="og:image:width" content="1200"/>
   <meta property="og:image:height" content="630"/>
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:site" content="@solosuccessai"/>
-  <meta name="twitter:image" content="./assets/og-image.png"/>
-  <meta name="description" content="Fran builds in public. Follow the full journey — launches, mistakes, lessons, and product updates from SoloSuccess Solutions."/>
+  <meta name="twitter:image" content="https://prettyinpurple2021.github.io/SoloSuccessPortfolio/assets/og-image.png"/>
+  <meta name="twitter:title" content="Building in Public — SoloSuccess Solutions"/>
+  <meta name="twitter:description" content="Follow launches, lessons learned, and founder thoughts from SoloSuccess Solutions."/>
+  <script type="application/ld+json">{
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "SoloSuccess Solutions Blog",
+    "url": "https://prettyinpurple2021.github.io/SoloSuccessPortfolio/blog.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "SoloSuccess Solutions"
+    }
+  }</script>
 
   <link rel="preconnect" href="https://api.fontshare.com"/>
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,700,800,900&f[]=satoshi@400,500,700&f[]=jet-brains-mono@400,700&display=swap" rel="stylesheet"/>
@@ -62,7 +79,7 @@
         </ul>
         <div class="nav__actions">
           <a href="./index.html" class="btn-outline" style="font-size:var(--text-sm);padding:8px 16px;">← Back to Site</a>
-          <a href="./admin.html" class="btn-holo" style="font-size:var(--text-sm);padding:8px 16px;">+ New Post</a>
+          <a href="./admin.html" class="btn-holo" style="font-size:var(--text-sm);padding:8px 16px;">Content Studio</a>
           <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
             <span></span><span></span><span></span>
           </button>
@@ -74,7 +91,7 @@
     <a href="./index.html#ecosystem">Products</a>
     <a href="./founder.html">Founder</a>
     <a href="./blog.html">Blog</a>
-    <a href="./admin.html">+ New Post</a>
+    <a href="./admin.html">Content Studio</a>
     <a href="./index.html">← Back to Site</a>
   </nav>
 </header>
@@ -116,7 +133,8 @@
   <!-- POST FEED -->
   <section class="section" style="padding-top:var(--sp6);" aria-label="Post feed">
     <div class="container">
-      <!-- Count strip -->
+      <label class="sr-only" for="blog-search">Search posts</label>
+      <input id="blog-search" class="blog-search" type="search" placeholder="Search posts, tags, products, or topics" autocomplete="off"/>
       <div class="blog-count">
         <p class="blog-count__text" id="post-count"></p>
       </div>
@@ -138,7 +156,7 @@
 
 <!-- POST MODAL -->
 <div class="post-modal-overlay" id="post-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
-  <div class="post-modal" id="post-modal">
+  <div class="post-modal" id="post-modal" tabindex="-1">
     <div class="post-modal__header">
       <div class="post-modal__header-meta">
         <span class="post-modal__type" id="modal-type"></span>
