@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin — Building in Public · SoloSuccess Solutions</title>
+  <title>Content Studio — SoloSuccess Solutions</title>
   <link rel="icon" type="image/png" href="./assets/favicon.png"/>
   <meta property="og:image" content="./assets/og-image.png"/>
   <meta property="og:image:width" content="1200"/>
@@ -11,8 +11,8 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:site" content="@solosuccessai"/>
   <meta name="twitter:image" content="./assets/og-image.png"/>
-  <!-- No indexing for admin -->
   <meta name="robots" content="noindex, nofollow"/>
+  <meta name="description" content="Local content studio for editing SoloSuccess blog posts and exporting posts.json."/>
 
   <link rel="preconnect" href="https://api.fontshare.com"/>
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,700,800,900&f[]=satoshi@400,500,700&f[]=jet-brains-mono@400,700&display=swap" rel="stylesheet"/>
@@ -20,417 +20,195 @@
   <link rel="stylesheet" href="./style.css"/>
   <link rel="stylesheet" href="./blog.css"/>
 
-
   <style>
     body { background: #0a0a14; margin: 0; }
-    /* Override base body::before dot grid for admin */
     body::before { display: none; }
+    .admin-toolbar {
+      display: flex;
+      gap: var(--sp4);
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--sp5) var(--sp6);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.02);
+    }
+    .admin-toolbar__actions {
+      display: flex;
+      gap: var(--sp3);
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .admin-mini-btn {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.72);
+      background: transparent;
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    .admin-mini-btn:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+    .admin-file-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.72);
+      padding: 8px 12px;
+      cursor: pointer;
+    }
+    .admin-file-label input { display: none; }
+    .admin-note {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: rgba(255,255,255,0.42);
+      letter-spacing: 0.06em;
+      line-height: 1.7;
+    }
+    .admin-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.75);
+    }
   </style>
 </head>
 <body class="admin-wrap">
 
-<!-- LOGIN SCREEN -->
-<div id="login-screen" class="admin-login">
-  <div class="admin-login__card">
-    <!-- Holo bar -->
-    <div style="height:3px;background:var(--holo);background-size:200%;animation:holo-pan 4s ease infinite;margin-bottom:var(--sp8);"></div>
+<header class="admin-header" role="banner">
+  <div class="admin-header__logo">SoloSuccess · Content Studio</div>
+  <div style="display:flex;align-items:center;gap:var(--sp4);flex-wrap:wrap;">
+    <div class="admin-header__status">File-based workflow</div>
+    <a href="./blog.html" target="_blank" rel="noopener noreferrer"
+      style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s ease;"
+      onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">
+      View Blog ↗
+    </a>
+  </div>
+</header>
 
-    <!-- Logo -->
-    <div style="margin-bottom:var(--sp6);">
-      <div style="font-family:var(--font-display);font-size:var(--text-xl);font-weight:900;text-transform:uppercase;letter-spacing:-0.02em;background:var(--holo);background-size:200%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;animation:holo-pan 5s ease infinite;">SoloSuccess</div>
-      <div style="font-family:var(--font-mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-top:2px;">Admin · Building in Public</div>
+<div class="admin-body">
+  <div class="admin-panel">
+    <div class="admin-form-card">
+      <div class="admin-card__header">Blog Content Workflow</div>
+      <div class="admin-toolbar">
+        <div>
+          <div class="admin-badge" id="source-badge">Repository posts.json</div>
+          <p class="admin-note" style="margin-top:var(--sp3);max-width:48ch;">
+            This editor works on an in-memory draft. Import a local <code>posts.json</code> file if you want to continue existing work, then export the updated file and replace <code>/posts.json</code> in the repository.
+          </p>
+        </div>
+        <div class="admin-toolbar__actions">
+          <label class="admin-file-label">Import posts.json <input type="file" id="import-file" accept="application/json,.json"/></label>
+          <button type="button" class="admin-mini-btn" id="reload-btn">Reload repository file</button>
+          <button type="button" class="admin-mini-btn" id="export-btn">Export posts.json</button>
+        </div>
+      </div>
+      <div class="admin-card__body">
+        <form id="post-form" novalidate>
+          <div class="admin-field">
+            <label class="admin-label" for="f-title">Title *</label>
+            <input type="text" id="f-title" class="admin-input" placeholder="e.g. Academy v2 just shipped" required/>
+          </div>
+
+          <div class="admin-field">
+            <label class="admin-label" for="f-excerpt">Excerpt * <span style="color:rgba(255,255,255,0.2);font-weight:400;">(1–2 sentences shown in feed)</span></label>
+            <input type="text" id="f-excerpt" class="admin-input" placeholder="A short teaser for the post card" required/>
+          </div>
+
+          <div class="admin-row">
+            <div class="admin-field">
+              <label class="admin-label" for="f-type">Post Type *</label>
+              <select id="f-type" class="admin-select">
+                <option value="build-update">Build Update</option>
+                <option value="product-announcement">Product Launch</option>
+                <option value="lessons-learned">Lessons Learned</option>
+                <option value="founder-thoughts">Founder Thoughts</option>
+              </select>
+            </div>
+            <div class="admin-field">
+              <label class="admin-label" for="f-product">Product</label>
+              <select id="f-product" class="admin-select">
+                <option value="general">General / SoloSuccess</option>
+                <option value="solosuccess-ai">SoloSuccess AI</option>
+                <option value="academy">Academy</option>
+                <option value="content-factory">Content Factory</option>
+                <option value="soloscribe">SoloScribe</option>
+                <option value="solodesign">SoloDesign</option>
+                <option value="soloscout">SoloScout</option>
+                <option value="soloconnect">SoloConnect</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="admin-row">
+            <div class="admin-field">
+              <label class="admin-label" for="f-date">Date *</label>
+              <input type="date" id="f-date" class="admin-input" required/>
+            </div>
+            <div class="admin-field">
+              <label class="admin-label" for="f-featured">Featured?</label>
+              <select id="f-featured" class="admin-select">
+                <option value="false">No</option>
+                <option value="true">Yes — show in hero</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="admin-field">
+            <label class="admin-label" for="f-tags">Tags <span style="color:rgba(255,255,255,0.2);font-weight:400;">(comma separated)</span></label>
+            <input type="text" id="f-tags" class="admin-input" placeholder="Launch, Lessons, Design"/>
+          </div>
+
+          <div class="admin-field">
+            <label class="admin-label" for="f-body">Full Post *</label>
+            <textarea id="f-body" class="admin-textarea" placeholder="Write your post here. Use double line breaks to separate paragraphs.&#10;&#10;Each double-break becomes a new paragraph." required style="min-height:220px;"></textarea>
+          </div>
+
+          <div id="type-preview" style="padding:var(--sp3) var(--sp4);margin-bottom:var(--sp4);border:1px solid rgba(255,255,255,0.08);font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:0.08em;">
+            Preview: <span id="preview-badge" style="padding:2px 8px;border:1.5px solid #888;color:#888;font-weight:700;font-size:9px;">BUILD UPDATE</span>
+          </div>
+
+          <button type="submit" id="submit-btn" class="admin-submit">Add Draft Post →</button>
+          <div id="form-error" style="display:none;font-family:var(--font-mono);font-size:10px;color:#ff5050;margin-top:var(--sp3);letter-spacing:0.06em;text-transform:uppercase;"></div>
+        </form>
+      </div>
     </div>
 
-    <div style="font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:var(--sp6);">Enter your passphrase to continue</div>
-
-    <form id="login-form" onsubmit="return false;" novalidate>
-      <input
-        type="password"
-        id="login-input"
-        class="admin-input"
-        placeholder="passphrase"
-        autocomplete="current-password"
-        aria-label="Admin passphrase"
-        style="text-align:center;letter-spacing:0.15em;font-size:16px;margin-bottom:var(--sp4);"
-      />
-      <button type="submit" id="login-btn" class="admin-submit">
-        Enter Admin →
-      </button>
-      <div id="login-error" style="display:none;font-family:var(--font-mono);font-size:10px;color:#ff5050;margin-top:var(--sp4);letter-spacing:0.08em;text-transform:uppercase;">
-        Incorrect passphrase.
+    <div class="admin-posts-card">
+      <div class="admin-card__header" style="display:flex;justify-content:space-between;align-items:center;">
+        <span>Draft Posts</span>
+        <span id="post-count-badge" style="font-size:9px;color:rgba(255,255,255,0.3);">loading…</span>
       </div>
-    </form>
-
-    <div style="margin-top:var(--sp8);font-family:var(--font-mono);font-size:9px;color:rgba(255,255,255,0.15);letter-spacing:0.08em;text-transform:uppercase;line-height:1.6;">
-      Default passphrase: <span style="color:rgba(255,255,255,0.3);">solosuccess2024</span><br/>
-      Change in admin.html before publishing.
+      <div class="admin-card__body" style="padding:0;">
+        <div id="admin-post-list"></div>
+      </div>
+      <div style="padding:var(--sp4) var(--sp5);border-top:1px solid rgba(255,255,255,0.06);">
+        <div class="admin-note">
+          Safer workflow: no hidden passphrase, no browser persistence, no illusion of server-side publishing. Export your draft and commit the updated <code>posts.json</code> file to publish changes.
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- ADMIN PANEL (hidden until login) -->
-<div id="admin-panel" style="display:none;">
-
-  <!-- Header -->
-  <header class="admin-header" role="banner">
-    <div class="admin-header__logo">SoloSuccess · Admin</div>
-    <div style="display:flex;align-items:center;gap:var(--sp4);">
-      <div class="admin-header__status">Logged In</div>
-      <a href="./blog.html" target="_blank" rel="noopener noreferrer"
-        style="font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.35);text-decoration:none;letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s ease;"
-        onmouseover="this.style.color='rgba(255,255,255,0.7)'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">
-        View Blog ↗
-      </a>
-      <button onclick="logout()"
-        style="font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.35);padding:4px 12px;cursor:pointer;transition:all 0.2s ease;"
-        onmouseover="this.style.color='rgba(255,80,80,0.8)';this.style.borderColor='rgba(255,80,80,0.4)'"
-        onmouseout="this.style.color='rgba(255,255,255,0.35)';this.style.borderColor='rgba(255,255,255,0.15)'">
-        Logout
-      </button>
-    </div>
-  </header>
-
-  <div class="admin-body">
-    <div class="admin-panel">
-
-      <!-- LEFT: New Post Form -->
-      <div class="admin-form-card">
-        <div class="admin-card__header">New Post</div>
-        <div class="admin-card__body">
-          <form id="post-form" novalidate onsubmit="return false;">
-
-            <div class="admin-field">
-              <label class="admin-label" for="f-title">Title *</label>
-              <input type="text" id="f-title" class="admin-input" placeholder="e.g. Academy v2 just shipped" required/>
-            </div>
-
-            <div class="admin-field">
-              <label class="admin-label" for="f-excerpt">Excerpt * <span style="color:rgba(255,255,255,0.2);font-weight:400;">(1–2 sentences shown in feed)</span></label>
-              <input type="text" id="f-excerpt" class="admin-input" placeholder="A short teaser for the post card" required/>
-            </div>
-
-            <div class="admin-row">
-              <div class="admin-field">
-                <label class="admin-label" for="f-type">Post Type *</label>
-                <select id="f-type" class="admin-select">
-                  <option value="build-update">Build Update</option>
-                  <option value="product-announcement">Product Launch</option>
-                  <option value="lessons-learned">Lessons Learned</option>
-                  <option value="founder-thoughts">Founder Thoughts</option>
-                </select>
-              </div>
-              <div class="admin-field">
-                <label class="admin-label" for="f-product">Product</label>
-                <select id="f-product" class="admin-select">
-                  <option value="general">General / SoloSuccess</option>
-                  <option value="solosuccess-ai">SoloSuccess AI</option>
-                  <option value="academy">Academy</option>
-                  <option value="content-factory">Content Factory</option>
-                  <option value="soloscribe">SoloScribe</option>
-                  <option value="solodesign">SoloDesign</option>
-                  <option value="soloscout">SoloScout</option>
-                  <option value="soloconnect">SoloConnect</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="admin-row">
-              <div class="admin-field">
-                <label class="admin-label" for="f-date">Date *</label>
-                <input type="date" id="f-date" class="admin-input" required/>
-              </div>
-              <div class="admin-field">
-                <label class="admin-label" for="f-featured">Featured?</label>
-                <select id="f-featured" class="admin-select">
-                  <option value="false">No</option>
-                  <option value="true">Yes — show in hero</option>
-                </select>
-              </div>
-            </div>
-
-            <div class="admin-field">
-              <label class="admin-label" for="f-tags">Tags <span style="color:rgba(255,255,255,0.2);font-weight:400;">(comma separated)</span></label>
-              <input type="text" id="f-tags" class="admin-input" placeholder="Launch, Lessons, Design"/>
-            </div>
-
-            <div class="admin-field">
-              <label class="admin-label" for="f-body">Full Post *</label>
-              <textarea id="f-body" class="admin-textarea" placeholder="Write your post here. Use double line breaks to separate paragraphs.&#10;&#10;Each double-break becomes a new paragraph." required style="min-height:220px;"></textarea>
-            </div>
-
-            <!-- Live preview strip -->
-            <div id="type-preview" style="padding:var(--sp3) var(--sp4);margin-bottom:var(--sp4);border:1px solid rgba(255,255,255,0.08);font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:0.08em;">
-              Preview: <span id="preview-badge" style="padding:2px 8px;border:1.5px solid #888;color:#888;font-weight:700;font-size:9px;">BUILD UPDATE</span>
-            </div>
-
-            <button type="submit" id="submit-btn" class="admin-submit">
-              Publish Post →
-            </button>
-
-            <div id="form-error" style="display:none;font-family:var(--font-mono);font-size:10px;color:#ff5050;margin-top:var(--sp3);letter-spacing:0.06em;text-transform:uppercase;"></div>
-          </form>
-        </div>
-      </div>
-
-      <!-- RIGHT: Published Posts -->
-      <div class="admin-posts-card">
-        <div class="admin-card__header" style="display:flex;justify-content:space-between;align-items:center;">
-          <span>Published Posts</span>
-          <span id="post-count-badge" style="font-size:9px;color:rgba(255,255,255,0.3);">loading…</span>
-        </div>
-        <div class="admin-card__body" style="padding:0;">
-          <div id="admin-post-list">
-            <!-- Populated by JS -->
-          </div>
-        </div>
-        <!-- Export JSON button -->
-        <div style="padding:var(--sp4) var(--sp5);border-top:1px solid rgba(255,255,255,0.06);">
-          <button class="admin-export" onclick="exportJSON()">
-            ↓ Export posts.json — update your site file
-          </button>
-          <div style="font-family:var(--font-mono);font-size:9px;color:rgba(255,255,255,0.2);margin-top:var(--sp3);line-height:1.6;">
-            Posts are saved in your browser. Export → replace <code style="color:rgba(255,255,255,0.35)">posts.json</code> → redeploy to make them permanent.
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- Success toast -->
 <div class="admin-toast" id="admin-toast" role="alert" aria-live="polite"></div>
 
-<script src="./blog.js"></script>
-<script>
-/* ── PASSPHRASE (change before publishing) ──────────────── */
-var PASSPHRASE = 'solosuccess2024';
-
-/* ── SESSION ─────────────────────────────────────────────── */
-function isLoggedIn() { return sessionStorage.getItem('ss_admin') === '1'; }
-function logout() { sessionStorage.removeItem('ss_admin'); location.reload(); }
-
-/* ── Color map ───────────────────────────────────────────── */
-var TYPE_COLORS = {
-  'build-update':         '#00cfff',
-  'product-announcement': '#ff9a00',
-  'lessons-learned':      '#c87af9',
-  'founder-thoughts':     '#ff4ec8',
-};
-var PRODUCT_PAPERS = {
-  'general':         '#fffde7',
-  'academy':         '#e3f2fd',
-  'content-factory': '#fff3e0',
-  'soloscribe':      '#f3e5f5',
-  'solodesign':      '#fffde7',
-  'soloscout':       '#e8f5e9',
-  'soloconnect':     '#fce4ec',
-  'solosuccess-ai':  '#ede7f6',
-};
-
-/* ── Boot ────────────────────────────────────────────────── */
-(function init() {
-  if (isLoggedIn()) {
-    showPanel();
-  } else {
-    showLogin();
-  }
-})();
-
-function showLogin() {
-  document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('admin-panel').style.display  = 'none';
-
-  var form  = document.getElementById('login-form');
-  var input = document.getElementById('login-input');
-  var err   = document.getElementById('login-error');
-  var btn   = document.getElementById('login-btn');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    if (input.value.trim() === PASSPHRASE) {
-      sessionStorage.setItem('ss_admin', '1');
-      showPanel();
-    } else {
-      err.style.display = 'block';
-      input.value = '';
-      input.focus();
-    }
-  });
-  btn.addEventListener('click', function() { form.dispatchEvent(new Event('submit')); });
-  // Also allow Enter key
-  input.addEventListener('keydown', function(e) { if (e.key === 'Enter') form.dispatchEvent(new Event('submit')); });
-}
-
-function showPanel() {
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('admin-panel').style.display  = 'block';
-  loadAdminPosts();
-  setupForm();
-  setupPreview();
-  setDefaultDate();
-}
-
-/* ── Set today as default date ───────────────────────────── */
-function setDefaultDate() {
-  var today = new Date().toISOString().split('T')[0];
-  document.getElementById('f-date').value = today;
-}
-
-/* ── Live type preview ───────────────────────────────────── */
-function setupPreview() {
-  var typeSelect = document.getElementById('f-type');
-  var badge      = document.getElementById('preview-badge');
-  var LABELS = {
-    'build-update': 'Build Update',
-    'product-announcement': 'Product Launch',
-    'lessons-learned': 'Lessons Learned',
-    'founder-thoughts': 'Founder Thoughts',
-  };
-  function update() {
-    var t   = typeSelect.value;
-    var col = TYPE_COLORS[t] || '#888';
-    badge.textContent     = (LABELS[t] || t).toUpperCase();
-    badge.style.color     = col;
-    badge.style.borderColor = col;
-  }
-  typeSelect.addEventListener('change', update);
-  update();
-}
-
-/* ── Form submit ─────────────────────────────────────────── */
-function setupForm() {
-  var form = document.getElementById('post-form');
-  var btn  = document.getElementById('submit-btn');
-  var err  = document.getElementById('form-error');
-
-  function doSubmit() {
-    err.style.display = 'none';
-    var title   = document.getElementById('f-title').value.trim();
-    var excerpt = document.getElementById('f-excerpt').value.trim();
-    var body    = document.getElementById('f-body').value.trim();
-    var date    = document.getElementById('f-date').value;
-    var type    = document.getElementById('f-type').value;
-    var product = document.getElementById('f-product').value;
-    var featured= document.getElementById('f-featured').value === 'true';
-    var tagsRaw = document.getElementById('f-tags').value;
-
-    if (!title || !excerpt || !body || !date) {
-      err.textContent   = 'Please fill in all required fields.';
-      err.style.display = 'block';
-      return;
-    }
-
-    var tags = tagsRaw.split(',').map(function(t){ return t.trim(); }).filter(Boolean);
-
-    var existing = [];
-    try { existing = JSON.parse(localStorage.getItem(BlogEngine.STORAGE_KEY) || '[]'); } catch(e){}
-
-    var newPost = {
-      id:          Date.now().toString(),
-      title:       title,
-      slug:        title.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''),
-      type:        type,
-      product:     product,
-      date:        date,
-      excerpt:     excerpt,
-      body:        body,
-      tags:        tags,
-      color:       TYPE_COLORS[type]    || '#888',
-      paperColor:  PRODUCT_PAPERS[product] || '#fffde7',
-      featured:    featured,
-    };
-
-    existing.unshift(newPost);
-    localStorage.setItem(BlogEngine.STORAGE_KEY, JSON.stringify(existing));
-    BlogEngine.invalidateCache();
-
-    // Reset form
-    document.getElementById('post-form').reset();
-    setDefaultDate();
-    loadAdminPosts();
-    showToast('Post published! ✓');
-    setupPreview(); // reset preview badge
-  }
-
-  btn.addEventListener('click', doSubmit);
-  form.addEventListener('submit', function(e){ e.preventDefault(); doSubmit(); });
-}
-
-/* ── Load posts list in admin ────────────────────────────── */
-function loadAdminPosts() {
-  var listEl = document.getElementById('admin-post-list');
-  var badge  = document.getElementById('post-count-badge');
-  BlogEngine.loadPosts(function(posts) {
-    badge.textContent = posts.length + ' post' + (posts.length !== 1 ? 's' : '');
-    if (!posts.length) {
-      listEl.innerHTML = '<div style="padding:var(--sp6) var(--sp5);font-family:var(--font-mono);font-size:10px;color:rgba(255,255,255,0.25);letter-spacing:0.08em;">No posts yet. Write your first one.</div>';
-      return;
-    }
-    var LABELS = {
-      'build-update':'Build Update','product-announcement':'Product Launch',
-      'lessons-learned':'Lessons Learned','founder-thoughts':'Founder Thoughts',
-    };
-    listEl.innerHTML = posts.map(function(p) {
-      var col = TYPE_COLORS[p.type] || '#888';
-      var label = LABELS[p.type] || p.type;
-      // Only show delete for localStorage posts (not base JSON)
-      var stored = [];
-      try { stored = JSON.parse(localStorage.getItem(BlogEngine.STORAGE_KEY)||'[]'); } catch(e){}
-      var isLocal = stored.some(function(s){ return s.id === p.id; });
-      return '<div class="admin-post-row">' +
-        '<div class="admin-post-row__dot" style="background:' + col + '"></div>' +
-        '<div style="flex:1;">' +
-          '<div class="admin-post-row__title">' + esc(p.title) + '</div>' +
-          '<div class="admin-post-row__meta">' + label + ' · ' + p.date + (p.product !== 'general' ? ' · ' + p.product : '') + '</div>' +
-        '</div>' +
-        (isLocal ? '<button class="admin-post-row__delete" onclick="deletePost(\'' + p.id + '\')" title="Delete post" aria-label="Delete: ' + esc(p.title) + '">✕</button>' : '') +
-      '</div>';
-    }).join('');
-  });
-}
-
-/* ── Delete a post (localStorage only) ──────────────────── */
-function deletePost(id) {
-  if (!confirm('Delete this post? This cannot be undone.')) return;
-  var existing = [];
-  try { existing = JSON.parse(localStorage.getItem(BlogEngine.STORAGE_KEY)||'[]'); } catch(e){}
-  existing = existing.filter(function(p){ return p.id !== id; });
-  localStorage.setItem(BlogEngine.STORAGE_KEY, JSON.stringify(existing));
-  BlogEngine.invalidateCache();
-  loadAdminPosts();
-  showToast('Post deleted.');
-}
-
-/* ── Export posts.json ───────────────────────────────────── */
-function exportJSON() {
-  BlogEngine.loadPosts(function(posts) {
-    var json = JSON.stringify(posts, null, 2);
-    var blob = new Blob([json], { type: 'application/json' });
-    var url  = URL.createObjectURL(blob);
-    var a    = document.createElement('a');
-    a.href   = url;
-    a.download = 'posts.json';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    showToast('posts.json exported ↓');
-  });
-}
-
-/* ── Toast ───────────────────────────────────────────────── */
-function showToast(msg) {
-  var t = document.getElementById('admin-toast');
-  t.textContent = msg;
-  t.classList.add('is-visible');
-  setTimeout(function(){ t.classList.remove('is-visible'); }, 3000);
-}
-
-/* ── HTML escape ─────────────────────────────────────────── */
-function esc(str) {
-  return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-</script>
+<script src="./admin.js"></script>
 </body>
 </html>

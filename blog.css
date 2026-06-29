@@ -673,3 +673,19 @@
   .post-card { transform: none !important; }
   .blog-hero__inner { grid-template-columns: 1fr; }
 }
+
+/* ── BLOG SEARCH ───────────────────────────────────────────── */
+.blog-search {
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid var(--ink);
+  box-shadow: 4px 4px 0 var(--ink);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: var(--text-sm);
+  margin-bottom: var(--sp5);
+}
+
+.blog-search::placeholder {
+  color: var(--ink-light);
+}

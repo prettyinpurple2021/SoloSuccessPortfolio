@@ -8,7 +8,7 @@ Last updated: June 21, 2026
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| 1 | Replace admin passphrase (default is public) | ⏳ Needs Fran | Change `solosuccess2024` in admin.html before sharing the URL widely |
+| 1 | Replace insecure admin publishing flow | ✅ Done | Removed passphrase/localStorage flow; admin now edits an in-memory draft and exports posts.json |
 | 2 | Real social / contact links (X, email) | ✅ Done | X → https://x.com/solosuccessai · Email → founder@solosuccesss.com |
 | 3 | Replace placeholder blog posts with real content | ⏳ Needs Fran | 7 sample posts exist; Fran to write real ones or approve edits |
 | 4 | "Get Started" pricing buttons → real links | ⏳ Needs Fran | Need actual signup/Stripe/waitlist URLs for each live product |
@@ -36,7 +36,7 @@ Last updated: June 21, 2026
 | 12 | Build branded 404.html page | ✅ Done | Y2K styled, links back to home |
 | 13 | Fix favicon — data-URI SVG doesn't work in Safari | ✅ Done | PNG favicon generated and linked |
 | 14 | Add og:image meta tag to all pages | ✅ Done | 1200×630 social preview image generated |
-| 15 | Blog admin persistence — localStorage only | ⏳ Future | Long-term: connect Supabase. For now: use Export button after each session |
+| 15 | Blog admin persistence — localStorage only | ✅ Done | Replaced with file-based posts.json import/export workflow |
 | 16 | SoloConnect product page — listed as product but no launch date yet | ⏳ Needs Fran | Confirm if SoloConnect is planned / when |
 
 ---
