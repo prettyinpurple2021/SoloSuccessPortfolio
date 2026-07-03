@@ -45,13 +45,13 @@ Last updated: June 21, 2026
 
 | # | Task | Status | Notes |
 |---|------|--------|-------|
-| 17 | Add a "roadmap" or "what's next" section to the home page | ⏳ Todo | Shows visitors what's coming — Scout launch, SoloConnect, etc. |
-| 18 | Blog RSS feed | ⏳ Todo | Simple RSS/JSON feed so people can subscribe |
+| 17 | Add a "roadmap" or "what's next" section to the home page | ✅ Done | Added timeline showing Q3 2026 - Q2 2027 milestone cards |
+| 18 | Blog RSS feed | ✅ Done | Static RSS feed XML generated on build at feed.xml |
 | 19 | Keyboard accessibility audit — focus states on all interactive elements | ⏳ Todo | Tab order, focus rings, ARIA labels check |
 | 20 | Performance — font preload optimization | ⏳ Todo | Fontshare loads 3 families; could be lazy-loaded for speed |
 | 21 | Add "Share on X" button to blog post modal | ⏳ Todo | One-click tweet after reading a post |
 | 22 | Add print / copy link button to blog posts | ⏳ Todo | Easy for readers to save or share individual posts |
-| 23 | Product page — "Who it's for" section | ⏳ Todo | Short callout on each product page specific to that product's user |
+| 23 | Product page — "Who it's for" section | ✅ Done | Customized snapshot column for each product |
 | 24 | Vercel analytics | ⏳ Todo | Enable Vercel Analytics to track page views and user behaviour |
 
 ---
@@ -78,3 +78,6 @@ Last updated: June 21, 2026
 - 404 page built
 - Favicon fixed
 - og:image added
+- Homepage detailed roadmap section added
+- Product page "Who It's For" custom details templated
+- Static blog RSS feed built and integrated

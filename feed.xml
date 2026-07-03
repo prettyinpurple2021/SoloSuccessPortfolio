@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>SoloSuccess Solutions Blog</title>
+  <link>https://prettyinpurple2021.github.io/SoloSuccessPortfolio/blog.html</link>
+  <description>Building in public: Updates and insights from SoloSuccess Solutions.</description>
+  <language>en-us</language>
+  <lastBuildDate>Fri, 03 Jul 2026 14:17:42 GMT</lastBuildDate>
+  <atom:link href="https://prettyinpurple2021.github.io/SoloSuccessPortfolio/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building in public: why I share everything</title>
+      <link>https://prettyinpurple2021.github.io/SoloSuccessPortfolio/blog.html#post-007</link>
+      <guid isPermaLink="true">https://prettyinpurple2021.github.io/SoloSuccessPortfolio/blog.html#post-007</guid>
+      <pubDate>Sun, 10 May 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Transparency is a strategy, not just a personality trait. Here's why I share the full picture — wins, losses, and everything in between.]]></description>
+    </item>
+    <item>
+      <title>SoloDesign ships — no designer required</title>
+      <link>https://prettyinpurple2021.github.io/SoloSuccessPortfolio/blog.html#post-006</link>
+      <guid isPermaLink="true">https://prettyinpurple2021.github.io/SoloSuccessPortfolio/blog.html#post-006</guid>
+      <pubDate>Tue, 28 Apr 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[Our fourth live product just launched. Describe what you need — SoloDesign delivers polished visual assets in minutes.]]></description>
+    </item>
+    <item>
+      <title>SoloScribe is live — write like you have a team</title>
+      <link>https://prettyinpurple2021.github.io/SoloSuccessPortfolio/blog.html#post-005</link>
+      <guid isPermaLink="true">https://prettyinpurple2021.github.io/SoloSuccessPortfolio/blog.html#post-005</guid>
+      <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[SoloScribe officially launched today. Voice matching, long-form AI, and persistent context — all built for solo founders who write alone.]]></description>
+    </item>
+    <item>
+      <title>The mistake that cost us 3 weeks</title>
+      <link>https://prettyinpurple2021.github.io/SoloSuccessPortfolio/blog.html#post-004</link>
+      <guid isPermaLink="true">https://prettyinpurple2021.github.io/SoloSuccessPortfolio/blog.html#post-004</guid>
+      <pubDate>Sun, 05 Apr 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[We over-engineered the database layer for SoloScribe before we had a single user. Here's what we'd do differently.]]></description>
+    </item>
+    <item>
+      <title>Content Factory: from idea to launch in 6 weeks</title>
+      <link>https://prettyinpurple2021.github.io/SoloSuccessPortfolio/blog.html#post-003</link>
+      <guid isPermaLink="true">https://prettyinpurple2021.github.io/SoloSuccessPortfolio/blog.html#post-003</guid>
+      <pubDate>Fri, 20 Mar 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[We built Content Factory faster than any other product. Here's the full breakdown of how and why.]]></description>
+    </item>
+    <item>
+      <title>Academy v1 shipped — here&apos;s what we learned</title>
+      <link>https://prettyinpurple2021.github.io/SoloSuccessPortfolio/blog.html#post-002</link>
+      <guid isPermaLink="true">https://prettyinpurple2021.github.io/SoloSuccessPortfolio/blog.html#post-002</guid>
+      <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
+      <description><![CDATA[SoloSuccess Academy is live. Here's everything we built, everything we cut, and what's coming in v2.]]></description>
+    </item>
+    <item>
+      <title>Why I started SoloSuccess Solutions</title>
+      <link>https://prettyinpurple2021.github.io/SoloSuccessPortfolio/blog.html#post-001</link>
+      <guid isPermaLink="true">https://prettyinpurple2021.github.io/SoloSuccessPortfolio/blog.html#post-001</guid>
+      <pubDate>Mon, 15 Dec 2025 00:00:00 GMT</pubDate>
+      <description><![CDATA[I spent weeks searching for software built for solo founders. It didn't exist. So I stopped searching and started building.]]></description>
+    </item>
+</channel>
+</rss>

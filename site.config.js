@@ -26,6 +26,7 @@ module.exports = {
       color: '#7c4dff',
       paper: '#ede7f6',
       status: 'soon',
+      whoItsFor: 'Solo founders who need strategic guidance, automated backend workflows, and round-the-clock decision support.',
       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73A2 2 0 0 1 10 4a2 2 0 0 1 2-2z"/><circle cx="9" cy="14" r="1" fill="currentColor"/><circle cx="15" cy="14" r="1" fill="currentColor"/></svg>`,
       features: [
         { title: 'Strategy Engine', desc: 'Generate go-to-market strategies, product roadmaps, and growth plans tailored to your specific stage and context.', icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20M6 20V10l6-6 6 6v10"/></svg>` },
@@ -56,6 +57,7 @@ module.exports = {
       color: '#00cfff',
       paper: '#e3f2fd',
       status: 'live',
+      whoItsFor: 'Early-stage builders looking for personalized, actionable, no-nonsense frameworks to learn and ship products.',
       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>`,
       features: [
         { title: 'Adaptive Curriculum', desc: 'The course path adjusts based on your business stage, industry, and goals. No wasted time on topics you\'ve already mastered.', icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>` },
@@ -88,6 +90,7 @@ module.exports = {
       color: '#ff9a00',
       paper: '#fff3e0',
       status: 'live',
+      whoItsFor: 'Creators and indie hackers who want to multiply their reach across social channels without spending hours writing.',
       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`,
       features: [
         { title: 'One-Click Expansion', desc: 'Drop in a URL, paste text, or upload a doc. Content Factory builds a full content calendar around it instantly.', icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>` },
@@ -120,6 +123,7 @@ module.exports = {
       color: '#c87af9',
       paper: '#f3e5f5',
       status: 'live',
+      whoItsFor: 'Freelancers and founders writing long-form proposals, SEO blog posts, and documentation in their unique brand voice.',
       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>`,
       features: [
         { title: 'Voice Matching', desc: 'Upload writing samples and SoloScribe learns exactly how you write — your rhythm, vocabulary, and personality carry through every output.', icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>` },
@@ -152,6 +156,7 @@ module.exports = {
       color: '#ffe800',
       paper: '#fffde7',
       status: 'live',
+      whoItsFor: 'Product builders who need high-quality pitch decks, social cards, and branding kits without hiring a design agency.',
       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>`,
       features: [
         { title: 'Brand Kit Generator', desc: 'Upload your logo and SoloDesign extracts a full brand kit — colours, fonts, spacing rules — that every asset respects automatically.', icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 0 0 5 5a10 10 0 0 0 0 14 10 10 0 0 0 14.07-1"/></svg>` },
@@ -184,6 +189,7 @@ module.exports = {
       color: '#00e676',
       paper: '#e8f5e9',
       status: 'soon',
+      whoItsFor: 'Indie hackers looking to identify warm sales leads, emerging market niches, and track competitor updates before others.',
       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>`,
       features: [
         { title: 'Trend Radar', desc: 'Monitor keywords, niches, and emerging conversations across the web to see where demand is building before it peaks.', icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>` },
@@ -214,6 +220,7 @@ module.exports = {
       color: '#ff4ec8',
       paper: '#fce4ec',
       status: 'soon',
+      whoItsFor: 'Independent entrepreneurs seeking high-quality networking, accountability check-ins, and peer skill swaps.',
       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 20h5v-2a3 3 0 0 0-5.356-1.857"/><path d="M9 20H4v-2a3 3 0 0 1 5.356-1.857"/><circle cx="12" cy="10" r="3"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg>`,
       features: [
         { title: 'Smart Matching', desc: 'AI pairs you with founders, freelancers, and collaborators who match your stage, goals, skillset, and energy.', icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 3h5v5"/><path d="M8 21H3v-5"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>` },

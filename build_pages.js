@@ -91,8 +91,8 @@ function pricingSection(p) {
 
 function launchSection(p) {
   const copy = p.status === 'live'
-    ? ['Live today', 'Available now as part of the SoloSuccess ecosystem.', 'Best for founders who want to ship faster without adding headcount.']
-    : ['Coming soon', 'Actively on the roadmap and designed to connect with the live SoloSuccess products on launch.', 'Best for founders who want early access and founding-member pricing.'];
+    ? ['Live today', 'Available now as part of the SoloSuccess ecosystem.']
+    : ['Coming soon', 'Actively on the roadmap and designed to connect with the live SoloSuccess products on launch.'];
 
   return `
   <section class="section" aria-labelledby="launch-title">
@@ -112,8 +112,8 @@ function launchSection(p) {
         </div>
         <div class="audience-card" role="listitem">
           <div class="audience-card__num">03</div>
-          <h3 class="audience-card__title">Best For</h3>
-          <p class="audience-card__desc">${copy[2]}</p>
+          <h3 class="audience-card__title">Who It's For</h3>
+          <p class="audience-card__desc">${p.whoItsFor}</p>
         </div>
       </div>
     </div>
@@ -326,11 +326,64 @@ function handleWaitlist(e) {
 </html>`;
 }
 
+function escapeXml(unsafe) {
+  return unsafe.replace(/[<>&'"]/g, (c) => {
+    switch (c) {
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '&': return '&amp;';
+      case '\'': return '&apos;';
+      case '"': return '&quot;';
+    }
+  });
+}
+
+function buildRssFeed() {
+  const postsFile = path.join(__dirname, 'posts.json');
+  if (!fs.existsSync(postsFile)) {
+    console.error('posts.json not found, skipping RSS generation');
+    return;
+  }
+  const posts = JSON.parse(fs.readFileSync(postsFile, 'utf8'));
+  posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const xmlItems = posts.map(post => {
+    const titleEscaped = escapeXml(post.title);
+    const link = `${siteMeta.baseUrl}/blog.html#post-${post.id}`;
+    const pubDate = new Date(post.date).toUTCString();
+    return `    <item>
+      <title>${titleEscaped}</title>
+      <link>${link}</link>
+      <guid isPermaLink="true">${link}</guid>
+      <pubDate>${pubDate}</pubDate>
+      <description><![CDATA[${post.excerpt}]]></description>
+    </item>`;
+  }).join('\n');
+
+  const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>${siteMeta.brandName} Blog</title>
+  <link>${siteMeta.baseUrl}/blog.html</link>
+  <description>Building in public: Updates and insights from SoloSuccess Solutions.</description>
+  <language>en-us</language>
+  <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+  <atom:link href="${siteMeta.baseUrl}/feed.xml" rel="self" type="application/rss+xml" />
+${xmlItems}
+</channel>
+</rss>`;
+
+  fs.writeFileSync(path.join(__dirname, 'feed.xml'), rssFeed, 'utf8');
+  console.log('✓ feed.xml generated');
+}
+
 PRODUCTS.forEach((p, i) => {
   const html = buildPage(p, i);
   const file = path.join(OUT, `${p.id}.html`);
   fs.writeFileSync(file, html, 'utf8');
   console.log(`✓ pages/${p.id}.html`);
 });
+
+buildRssFeed();
 
 console.log(`\nDone — ${PRODUCTS.length} pages written to /pages/`);
