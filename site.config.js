@@ -43,7 +43,7 @@ module.exports = {
         { label: 'Ship', title: 'Execute with confidence', desc: 'Move faster and with more certainty than founders who are guessing alone.' },
       ],
       pricing: null,
-      waitlistTitle: 'Be first when we launch.',
+      waitlistTitle: 'Be first when I launch.',
       waitlistDesc: 'SoloSuccess AI is in private development. Join the waitlist to get early access and founding-member pricing.',
     },
     {
@@ -68,7 +68,7 @@ module.exports = {
         { title: 'Certification', desc: 'Earn a verified Solo Founder certification to display on your profile and prove your systematic approach to building.', icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>` },
       ],
       steps: [
-        { label: 'Profile your business', title: 'Tell us where you are', desc: 'Answer 5 questions about your stage, goals, and gaps. Academy builds a personalised learning path in under 60 seconds.' },
+        { label: 'Profile your business', title: 'Tell me where you are', desc: 'Answer 5 questions about your stage, goals, and gaps. Academy builds a personalised learning path in under 60 seconds.' },
         { label: 'Start your first module', title: 'Learn in sprints', desc: 'Modules are 15–20 minutes each. Consume them when you have time — even between client calls or during lunch.' },
         { label: 'Apply to your business', title: 'Build while you learn', desc: 'Every lesson ends with a direct action you can take in your business today, not someday.' },
         { label: 'Track progress', title: 'See yourself grow', desc: 'Watch your skills map fill out as you complete modules. Your certification unlocks when you\'ve hit every milestone.' },

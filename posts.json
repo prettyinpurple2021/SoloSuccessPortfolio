@@ -11,7 +11,7 @@
     "tags": [
       "Origin Story",
       "Building Solo",
-      "Why We Built This"
+      "Why I Built This"
     ],
     "color": "#ff4ec8",
     "paperColor": "#fce4ec",
@@ -19,13 +19,13 @@
   },
   {
     "id": "002",
-    "title": "Academy v1 shipped \u2014 here's what we learned",
+    "title": "Academy v1 shipped — here's what I learned",
     "slug": "academy-v1-shipped",
     "type": "build-update",
     "product": "academy",
     "date": "2026-02-28",
-    "excerpt": "SoloSuccess Academy is live. Here's everything we built, everything we cut, and what's coming in v2.",
-    "body": "Academy is live. After months of planning, building, and rebuilding the curriculum engine, we shipped v1 today.\n\nWhat made it in: adaptive course paths, 20 foundational modules, the founder playbook library, and basic AI study partner integration.\n\nWhat got cut for v2: live workshops (we weren't ready to run them well), cohort features, and the full certification system. We made the call to ship something excellent rather than something complete.\n\nThe biggest lesson: curriculum is a product, not just content. Getting the adaptive logic right took 3x longer than expected. We're glad we invested the time \u2014 the early feedback has been strong.\n\nv2 is already planned. Live workshops first, then cohorts.",
+    "excerpt": "SoloSuccess Academy is live. Here's everything I built, everything I cut, and what's coming in v2.",
+    "body": "Academy is live. After months of planning, building, and rebuilding the curriculum engine, I shipped v1 today.\n\nWhat made it in: adaptive course paths, 20 foundational modules, the founder playbook library, and basic AI study partner integration.\n\nWhat got cut for v2: live workshops (I wasn't ready to run them well), cohort features, and the full certification system. I made the call to ship something excellent rather than something complete.\n\nThe biggest lesson: curriculum is a product, not just content. Getting the adaptive logic right took 3x longer than expected. I'm glad I invested the time — the early feedback has been strong.\n\nv2 is already planned. Live workshops first, then cohorts.",
     "tags": [
       "Launch",
       "Product Update",
@@ -42,8 +42,8 @@
     "type": "build-update",
     "product": "content-factory",
     "date": "2026-03-20",
-    "excerpt": "We built Content Factory faster than any other product. Here's the full breakdown of how and why.",
-    "body": "Content Factory was our fastest build yet \u2014 6 weeks from whiteboard to live product. Here's how we did it.\n\nThe insight was simple: solo founders don't lack ideas, they lack time to turn one idea into 10 pieces of content. The product just needed to nail that core loop.\n\nWe focused entirely on the content expansion engine first. Input \u2192 multiple platform outputs \u2192 brand voice preservation. Everything else \u2014 scheduling, analytics, team features \u2014 came second.\n\nThe repurposing engine was the hardest part. Getting the AI to understand that a LinkedIn post and a Twitter thread need completely different structures, not just different lengths, took multiple iterations.\n\nWe shipped with 5 platform types. We now support 12. The lesson: launch narrow and expand based on what users actually use.",
+    "excerpt": "I built Content Factory faster than any other product. Here's the full breakdown of how and why.",
+    "body": "Content Factory was my fastest build yet — 6 weeks from whiteboard to live product. Here's how I did it.\n\nThe insight was simple: solo founders don't lack ideas, they lack time to turn one idea into 10 pieces of content. The product just needed to nail that core loop.\n\nI focused entirely on the content expansion engine first. Input → multiple platform outputs → brand voice preservation. Everything else — scheduling, analytics, team features — came second.\n\nThe repurposing engine was the hardest part. Getting the AI to understand that a LinkedIn post and a Twitter thread need completely different structures, not just different lengths, took multiple iterations.\n\nI shipped with 5 platform types. I now support 12. The lesson: launch narrow and expand based on what users actually use.",
     "tags": [
       "Launch",
       "Build Log",
@@ -55,13 +55,13 @@
   },
   {
     "id": "004",
-    "title": "The mistake that cost us 3 weeks",
+    "title": "The mistake that cost me 3 weeks",
     "slug": "the-mistake-that-cost-3-weeks",
     "type": "lessons-learned",
     "product": "general",
     "date": "2026-04-05",
-    "excerpt": "We over-engineered the database layer for SoloScribe before we had a single user. Here's what we'd do differently.",
-    "body": "This one hurt. Before we had a single user for SoloScribe, we spent three weeks architecting a database schema for a scale we hadn't earned yet.\n\nWe were thinking about multi-tenancy, sharding, complex relational structures for document versioning. All of it technically correct. None of it necessary.\n\nWhen we finally launched and got real users, their actual usage patterns were completely different from what we'd designed for. We had to refactor half of what we'd built anyway.\n\nThe lesson we keep learning (and apparently need to keep relearning): build for the users you have, not the users you imagine having. Premature optimization is just procrastination wearing an engineering hat.\n\nWe now have a rule: no scaling infrastructure until we hit a real scaling problem. Constraints are a feature, not a bug.",
+    "excerpt": "I over-engineered the database layer for SoloScribe before I had a single user. Here's what I'd do differently.",
+    "body": "This one hurt. Before I had a single user for SoloScribe, I spent three weeks architecting a database schema for a scale I hadn't earned yet.\n\nI was thinking about multi-tenancy, sharding, complex relational structures for document versioning. All of it technically correct. None of it necessary.\n\nWhen I finally launched and got real users, their actual usage patterns were completely different from what I'd designed for. I had to refactor half of what I'd built anyway.\n\nThe lesson I keep learning (and apparently need to keep relearning): build for the users you have, not the users you imagine having. Premature optimization is just procrastination wearing an engineering hat.\n\nI now have a rule: no scaling infrastructure until I hit a real scaling problem. Constraints are a feature, not a bug.",
     "tags": [
       "Mistakes",
       "Engineering",
@@ -96,8 +96,8 @@
     "type": "product-announcement",
     "product": "solodesign",
     "date": "2026-04-28",
-    "excerpt": "Our fourth live product just launched. Describe what you need \u2014 SoloDesign delivers polished visual assets in minutes.",
-    "body": "SoloDesign is live. Product four of seven is officially out the door.\n\nThis one took longer than expected because visual quality is unforgiving. Users can tolerate a mediocre strategy suggestion. They can't tolerate a mediocre graphic representing their brand.\n\nWe rebuilt the generation pipeline twice before we were happy with the output quality. The brand kit extraction engine \u2014 the part that pulls your colors, fonts, and style from an uploaded logo \u2014 was the hardest technical challenge we've tackled so far.\n\nWhat's live today: brand kit generator, social asset engine, 500+ templates, one-click resize. The pitch deck builder ships in the next update.\n\nIf you've been doing your own design because you couldn't afford a designer, this one's for you.",
+    "excerpt": "My fourth live product just launched. Describe what you need — SoloDesign delivers polished visual assets in minutes.",
+    "body": "SoloDesign is live. Product four of seven is officially out the door.\n\nThis one took longer than expected because visual quality is unforgiving. Users can tolerate a mediocre strategy suggestion. They can't tolerate a mediocre graphic representing their brand.\n\nI rebuilt the generation pipeline twice before I was happy with the output quality. The brand kit extraction engine — the part that pulls your colors, fonts, and style from an uploaded logo — was the hardest technical challenge I've tackled so far.\n\nWhat's live today: brand kit generator, social asset engine, 500+ templates, one-click resize. The pitch deck builder ships in the next update.\n\nIf you've been doing your own design because you couldn't afford a designer, this one's for you.",
     "tags": [
       "Launch",
       "Design",
