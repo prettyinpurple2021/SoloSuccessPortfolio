@@ -411,6 +411,25 @@ ul { list-style: none; }
   padding-block: clamp(var(--sp16), 10vw, var(--sp24));
 }
 
+.hero__mesh {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: 
+    radial-gradient(at 10% 20%, rgba(255, 0, 204, 0.04) 0px, transparent 50%),
+    radial-gradient(at 90% 10%, rgba(0, 204, 255, 0.05) 0px, transparent 50%),
+    radial-gradient(at 50% 80%, rgba(255, 238, 0, 0.03) 0px, transparent 50%),
+    radial-gradient(at 80% 80%, rgba(153, 0, 255, 0.04) 0px, transparent 50%);
+  background-size: 200% 200%;
+  animation: mesh-pan 24s ease infinite alternate;
+}
+@keyframes mesh-pan {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
 /* Y2K star-burst / diagonal stripe bg accent */
 .hero__stripe {
   position: absolute;
@@ -914,11 +933,41 @@ ul { list-style: none; }
   margin-inline: auto;
 }
 .terminal__body {
+  position: relative;
   padding: var(--sp5) var(--sp6);
   font-family: var(--font-mono);
   font-size: 13px;
   line-height: 1.9;
   color: #e0e0f0;
+  overflow: hidden;
+}
+/* Screen scanlines overlay */
+.terminal__body::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.15) 50%
+  );
+  background-size: 100% 4px;
+  z-index: 10;
+  opacity: 0.7;
+}
+/* Screen radial glow spotlight */
+.terminal__body::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(124, 77, 255, 0.08), transparent 80%);
+  z-index: 5;
+  animation: crt-screen-glow 6s ease-in-out infinite alternate;
+}
+@keyframes crt-screen-glow {
+  0% { opacity: 0.8; }
+  100% { opacity: 1.2; }
 }
 .t-prompt { color: #56d364; }
 .t-cmd    { color: #79c0ff; }
