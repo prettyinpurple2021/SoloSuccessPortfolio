@@ -194,7 +194,7 @@ function buildPage(p, idx) {
   <meta name="twitter:image" content="${absoluteUrl('assets/og-image.png')}"/>
   <meta name="twitter:title" content="${productName} — ${siteMeta.brandName}"/>
   <meta name="twitter:description" content="${p.desc.slice(0, 155)}"/>
-  <link rel="preconnect" href="https://api.fontshare.com"/>
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin/>
   <link href="${siteMeta.fontshareHref}" rel="stylesheet"/>
   <link rel="stylesheet" href="../base.css"/>
   <link rel="stylesheet" href="../style.css"/>

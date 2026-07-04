@@ -47,10 +47,10 @@ Last updated: June 21, 2026
 |---|------|--------|-------|
 | 17 | Add a "roadmap" or "what's next" section to the home page | ✅ Done | Added timeline showing Q3 2026 - Q2 2027 milestone cards |
 | 18 | Blog RSS feed | ✅ Done | Static RSS feed XML generated on build at feed.xml |
-| 19 | Keyboard accessibility audit — focus states on all interactive elements | ⏳ Todo | Tab order, focus rings, ARIA labels check |
-| 20 | Performance — font preload optimization | ⏳ Todo | Fontshare loads 3 families; could be lazy-loaded for speed |
-| 21 | Add "Share on X" button to blog post modal | ⏳ Todo | One-click tweet after reading a post |
-| 22 | Add print / copy link button to blog posts | ⏳ Todo | Easy for readers to save or share individual posts |
+| 19 | Keyboard accessibility audit — focus states on all interactive elements | ✅ Done | Audited and added gorgeous high-visibility magenta outline style |
+| 20 | Performance — font preload optimization | ✅ Done | Added crossorigin tag to Fontshare preconnect links across all pages |
+| 21 | Add "Share on X" button to blog post modal | ✅ Done | Installed button template and click routing logic |
+| 22 | Add print / copy link button to blog posts | ✅ Done | Added Copy link button in blog modal with success state |
 | 23 | Product page — "Who it's for" section | ✅ Done | Customized snapshot column for each product |
 | 24 | Vercel analytics | ⏳ Todo | Enable Vercel Analytics to track page views and user behaviour |
 
